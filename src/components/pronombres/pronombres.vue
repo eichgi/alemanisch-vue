@@ -13,12 +13,3 @@
         <router-view></router-view>
     </div>
 </template>
-<script>
-    /*import Personales from './personales.vue'
-
-    export default {
-        components: {
-            personales: Personales
-        }
-    }*/
-</script>

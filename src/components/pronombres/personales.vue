@@ -1,88 +1,37 @@
 <template>
     <div>
-        <div class="section">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-half">
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Instrucciones
-                                </p>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <ol>
-                                        <li>Revisa la
-                                            <button class="button is-primary is-small" @click="mostrarGuia">guía
-                                            </button>
-                                            cuantas veces sea necesario.
-                                        </li>
-                                        <li>Llena los campos con el pronombre correcto</li>
-                                        <li>Una vez completados oprime el botón de "Terminar"</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <!--<div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Información
-                                </p>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <p>Los pronombres personales en Nominativo es una de las primeras cosas que hay
-                                        aprender en alemán, dado que son básicos para realizar nuestras primeras
-                                        oraciones.</p>
-
-                                    <p>Puedes encontrar más información en el siguiente enlace:
-                                        https://www.alemansencillo.com/pronombres-en-aleman</p>
-                                </div>
-                            </div>
-                        </div>-->
-                        <informacion></informacion>
-                    </div>
-                    <div class="column is-half">
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Pronombres personales nominativos
-                                </p>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <!--<div class="field is-horizontal">
-                                        <div class="field-label is-normal">
-                                            <label class="label">Yo</label>
-                                        </div>
-                                        <div class="field-body">
-                                            <div class="field">
-                                                <div class="control">
-                                                    <input class="input is-success"
-                                                           type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>-->
-                                    <template v-for="pronombre in pronombres">
-                                        <pronombre :pronombre="pronombre"
-                                                   v-on:actualizar="actualizarRespuesta"></pronombre>
-                                    </template>
-                                </div>
-                            </div>
-                            <footer class="card-footer">
-                                <a href=# class="card-footer-item" @click.prevent="validar">Terminar</a>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="tabs is-centered is-toggle is-fullwidth">
+            <ul>
+                <!--<router-link active-class="is-active" exact tag="li" to="/pronombres/personales/nominativos">-->
+                <router-link active-class="is-active" exact tag="li" to="/pronombres/nominativos">
+                    <a>
+                        <span>Nominativos</span>
+                    </a>
+                </router-link>
+                <!--<router-link active-class="is-active" tag="li" class="" to="/pronombres/personales/acusativos">-->
+                <router-link active-class="is-active" tag="li" class="" to="/pronombres/acusativos">
+                    <a>
+                        <span>Acusativos</span>
+                    </a>
+                </router-link>
+                <!--<router-link active-class="is-active" tag="li" class="" to="/pronombres/personales/dativos">-->
+                <router-link active-class="is-active" tag="li" class="" to="/pronombres/dativos">
+                    <a>
+                        <span>Dativos</span>
+                    </a>
+                </router-link>
+            </ul>
         </div>
+
+        <router-view></router-view>
     </div>
 </template>
 <script>
+    export default {
+        methods: {}
+    }
+</script>
+<!--<script>
     import Axios from 'axios';
     import PronombreInput from './pronombre-input.vue';
     import Informacion from './informacion.vue';
@@ -117,11 +66,11 @@
                 Axios.get('http://germanisch.test/api/pronombres')
                     .then(res => {
                         this.pronombres = res.data.data.pronombres;
-                        console.log(this.pronombres);
+                        //console.log(this.pronombres);
                     });
             },
             actualizarRespuesta(value){
-                console.log(value);
+                //console.log(value);
                 this.respuesta[value] = true;
             },
             validar(){
@@ -171,4 +120,4 @@
             }
         }
     }
-</script>
+</script>-->

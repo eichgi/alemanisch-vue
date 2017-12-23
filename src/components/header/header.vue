@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-info">
+    <nav class="navbar is-primary">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
 
@@ -21,7 +21,8 @@
                 <router-link class="navbar-item has-dropdown is-hoverable" to="/pronombres">
                     <a class="navbar-link">Pronombres</a>
                     <div class="navbar-dropdown">
-                        <router-link class="navbar-item" to="/pronombres/personales">Personales</router-link>
+                        <!--<router-link class="navbar-item" to="/pronombres/personales">Personales</router-link>-->
+                        <router-link class="navbar-item" to="/pronombres/nominativos">Personales</router-link>
                         <!--<a class="navbar-item" href="/documentation/overview/start/">
                             Personales
                         </a>-->

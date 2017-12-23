@@ -1,4 +1,4 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template>
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label">{{pronombre.pronombre.capitalize()}}</label>
@@ -20,7 +20,7 @@
 
     export default {
         mounted: function () {
-            console.log(this.pronombre);
+            //console.log(this.pronombre);
         },
         props: ['pronombre'],
         data(){
