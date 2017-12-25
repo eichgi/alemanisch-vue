@@ -9,6 +9,7 @@
                     <input type="text" @keyup="validarInput($event)" v-model="pronomen"
                            :class="[valid ? 'is-success' : '', 'input']">
                 </div>
+                <p v-show="valid" class="help is-success">{{pronombre.ejemplo}} | {{pronombre.exempel}}</p>
             </div>
         </div>
     </div>

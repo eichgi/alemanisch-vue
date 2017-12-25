@@ -2,19 +2,16 @@
     <div>
         <div class="tabs is-centered is-toggle is-fullwidth">
             <ul>
-                <!--<router-link active-class="is-active" exact tag="li" to="/pronombres/personales/nominativos">-->
                 <router-link active-class="is-active" exact tag="li" to="/pronombres/nominativos">
                     <a>
                         <span>Nominativos</span>
                     </a>
                 </router-link>
-                <!--<router-link active-class="is-active" tag="li" class="" to="/pronombres/personales/acusativos">-->
                 <router-link active-class="is-active" tag="li" class="" to="/pronombres/acusativos">
                     <a>
                         <span>Acusativos</span>
                     </a>
                 </router-link>
-                <!--<router-link active-class="is-active" tag="li" class="" to="/pronombres/personales/dativos">-->
                 <router-link active-class="is-active" tag="li" class="" to="/pronombres/dativos">
                     <a>
                         <span>Dativos</span>

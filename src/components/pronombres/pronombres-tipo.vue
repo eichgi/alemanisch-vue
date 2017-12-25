@@ -112,7 +112,7 @@
             {
                 swal.showLoading();
                 this.pronombres = [];
-                //Axios.get('http://germanisch.test/api/pronombres/' + this.tipo)
+                //Axios.get('http://alemannisch.test/api/pronombres/' + this.tipo)
                 Axios.get('http://104.236.246.206/api/pronombres/' + this.tipo)
                     .then(res => {
                         this.pronombres = res.data.data.pronombres;
