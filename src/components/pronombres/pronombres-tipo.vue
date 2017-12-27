@@ -83,7 +83,7 @@
 <style>
 </style>
 <script>
-    import Axios from 'axios';
+    import Axios from './../../axios';
     import PronombreInput from './pronombre-input.vue';
     import Informacion from './informacion.vue';
     import swal from 'sweetalert2';
@@ -112,8 +112,7 @@
             {
                 swal.showLoading();
                 this.pronombres = [];
-                //Axios.get('http://alemannisch.test/api/pronombres/' + this.tipo)
-                Axios.get('http://104.236.246.206/api/pronombres/' + this.tipo)
+                Axios.get('/pronombres/' + this.tipo)
                     .then(res => {
                         this.pronombres = res.data.data.pronombres;
                         this.descripcion = res.data.data.descripcion;
@@ -122,7 +121,7 @@
                     });
             },
             actualizarRespuesta(value){
-                console.log(value);
+                //console.log(value);
                 this.respuesta[value] = true;
             },
             validar(){

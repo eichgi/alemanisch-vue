@@ -1,18 +1,12 @@
-# alemannisch
+# Alemannisch
 
-> A Vue.js project
+> Aprende alemán practicando
 
-## Build Setup
+Este es el repositorio del cliente Front-end de Alemannisch, este proyecto 
+esta realizado en su totalidad utilizando los siguientes frameworks y librerías:
 
-``` bash
-# install dependencies
-npm install
+- Bulma CSS
+- Vue JS + Vuex + Vue router
+- Axios
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+El backend en un proyecto en Laravel y para su consumo se requiere de un API Token.

@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar is-primary">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
+            <a class="navbar-item" href="#">
 
                 <!--<img src="https://bulma.io/images/bulma-logo-white.png"
                      alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
@@ -40,6 +40,31 @@
             </div>
 
             <div class="navbar-end">
+                <router-link class="navbar-item" to="/login" v-if="!auth">
+                    Iniciar sesión
+                </router-link>
+                <a class="navbar-item has-dropdown is-hoverable" v-if="auth">
+                    <a class="navbar-link">Opciones</a>
+                    <div class="navbar-dropdown">
+                        <router-link class="navbar-item" to="/perfil">
+                            Perfil
+                        </router-link>
+                        <router-link class="navbar-item" to="/logout">
+                            Cerrar sesión
+                        </router-link>
+                    </div>
+                </a>
+                <!--<router-link class="navbar-item has-dropdown is-hoverable" to="/pronombres">
+                    <a class="navbar-link">Opciones</a>
+                    <div class="navbar-dropdown">
+                        <router-link class="navbar-item" to="/perfil">
+                            Perfil
+                        </router-link>
+                        <router-link class="navbar-item" to="/perfil">
+                            Cerrar sesión
+                        </router-link>
+                    </div>
+                </router-link>-->
                 <!--<div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
@@ -71,5 +96,27 @@
 <style>
 </style>
 <script>
-
+    export default {
+        computed: {
+            auth(){
+                return this.$store.getters.estaAutenticado;
+            }
+        }
+    }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
