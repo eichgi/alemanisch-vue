@@ -95,8 +95,8 @@
     export default{
         data(){
             return {
-                email: 'hiramg90@gmail.com',
-                password: '123456'
+                email: '',
+                password: ''
             }
         },
         computed: {

@@ -99,9 +99,9 @@
     export default{
         data(){
             return {
-                nombre: 'Rose Rockdriguez',
-                email: 'rose@mail.com',
-                password: '654321',
+                nombre: '',
+                email: '',
+                password: '',
             }
         },
         computed: {
@@ -109,7 +109,6 @@
                 let status = this.$store.getters.respuesta;
                 this.lanzarModal(status);
                 return status;
-                //return this.$store.getters.respuesta;
             }
         },
         methods: {
