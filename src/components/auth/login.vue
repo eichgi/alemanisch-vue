@@ -12,7 +12,7 @@
                         <form>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="email" v-model="email" placeholder="Your Email"
+                                    <input class="input is-large" type="email" v-model="email" placeholder="Email"
                                            autofocus="">
                                 </div>
                             </div>
@@ -20,7 +20,7 @@
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" type="password" v-model="password"
-                                           placeholder="Your Password">
+                                           placeholder="Contraseña">
                                 </div>
                             </div>
                             <!--<div class="field">
@@ -44,12 +44,6 @@
     </section>
 </template>
 <style>
-    html, body {
-        /*font-family: 'Open Sans', serif;*/
-        /*font-size: 14px;
-        font-weight: 300;*/
-    }
-
     .hero.is-success {
         background: #F2F6FA;
     }
@@ -57,23 +51,6 @@
     .hero .nav, .hero.is-success .nav {
         -webkit-box-shadow: none;
         box-shadow: none;
-    }
-
-    .box {
-        /* margin-top: 5rem;*/
-    }
-
-    .avatar {
-        margin-top: -70px;
-        padding-bottom: 20px;
-    }
-
-    .avatar img {
-        padding: 5px;
-        background: #fff;
-        border-radius: 50%;
-        -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
-        box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
     }
 
     input {
@@ -115,7 +92,6 @@
                 this.$store.dispatch('login', formData);
             },
             lanzarModal(status){
-                console.log('>>> ' + status);
                 if (status) {
                     swal({
                         title: status,

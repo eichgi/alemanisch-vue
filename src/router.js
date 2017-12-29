@@ -6,6 +6,7 @@ import Login from './components/auth/login.vue'
 import Registro from './components/auth/registro.vue'
 import Logout from './components/auth/logout.vue'
 import Perfil from './components/perfil/perfil.vue'
+import Admin from './components/perfil/admin.vue'
 import Pronombres from './components/pronombres/pronombres.vue'
 import Personales from './components/pronombres/personales.vue'
 import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
@@ -13,12 +14,14 @@ import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/', component: Home},
+    {
+        path: '/',
+        component: Home,
+    },
     {
         path: '/login',
         component: Login,
         beforeEnter(to, from, next){
-            //console.log(store.getters.estaAutenticado);
             if (store.getters.estaAutenticado) {
                 next('/');
             } else {
@@ -50,7 +53,7 @@ const routes = [
     },
     {
         path: '/perfil',
-        component: Perfil,
+        component: Admin,
         beforeEnter(to, from, next){
             if (store.getters.estaAutenticado) {
                 next();

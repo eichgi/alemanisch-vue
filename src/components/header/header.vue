@@ -2,7 +2,6 @@
     <nav class="navbar is-primary">
         <div class="navbar-brand">
             <a class="navbar-item" href="#">
-
                 <!--<img src="https://bulma.io/images/bulma-logo-white.png"
                      alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
                 <b>Alemannisch!</b>
@@ -17,15 +16,32 @@
 
         <div id="navMenuColordark-example" class="navbar-menu">
             <div class="navbar-start">
-                <router-link class="navbar-item" to="/">Home</router-link>
-                <router-link class="navbar-item has-dropdown is-hoverable" to="/pronombres">
+                <router-link class="navbar-item" to="/">Inicio</router-link>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="#" class="navbar-link">Ejercicios</a>
+                    <div class="navbar-dropdown">
+                        <router-link class="navbar-item" to="/pronombres/nominativos">Pronombres
+                        </router-link>
+                        <hr class="navbar-divider">
+                        <router-link class="navbar-item" to="/">
+                            Verbos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                        </router-link>
+                        <router-link class="navbar-item" to="/">
+                            Articulos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                        </router-link>
+                        <router-link class="navbar-item" to="/">
+                            Sustantivos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                        </router-link>
+                    </div>
+                </div>
+                <!--<router-link class="navbar-item has-dropdown is-hoverable" to="/pronombres">
                     <a class="navbar-link">Pronombres</a>
                     <div class="navbar-dropdown">
-                        <!--<router-link class="navbar-item" to="/pronombres/personales">Personales</router-link>-->
+                        &lt;!&ndash;<router-link class="navbar-item" to="/pronombres/personales">Personales</router-link>&ndash;&gt;
                         <router-link class="navbar-item" to="/pronombres/nominativos">Personales</router-link>
-                        <!--<a class="navbar-item" href="/documentation/overview/start/">
+                        &lt;!&ndash;<a class="navbar-item" href="/documentation/overview/start/">
                             Personales
-                        </a>-->
+                        </a>&ndash;&gt;
                         <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
                             Posesivos
                         </a>
@@ -36,7 +52,7 @@
                             Otros
                         </a>
                     </div>
-                </router-link>
+                </router-link>-->
             </div>
 
             <div class="navbar-end">
@@ -96,10 +112,26 @@
 <style>
 </style>
 <script>
+    /*let navbar_item = document.querySelector('.navbar-item');
+     console.log(navbar_item);*/
+    /*navbar_item.addEventListener('click', () => {
+     alert('HOLA');
+     });*/
+
     export default {
+        data(){
+            return {
+                showNav: false,
+            }
+        },
         computed: {
             auth(){
                 return this.$store.getters.estaAutenticado;
+            }
+        },
+        methods: {
+            ocultarMenu(){
+                this.showNav = false;
             }
         }
     }

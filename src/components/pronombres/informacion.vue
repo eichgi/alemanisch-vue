@@ -7,18 +7,16 @@
         </header>
         <div class="card-content">
             <div class="content">
-                <p v-html="descripcion"></p>
+                <p>{{descripcion}}</p>
+                <p>Puedes encontrar más información en el siguiente enlace:
+                    <a :href="enlace">{{enlace}}</a>
+                </p>
             </div>
         </div>
     </div>
 </template>
 <script>
     export default{
-        props: ['descripcion'],
-        data(){
-            return {
-
-            }
-        },
+        props: ['descripcion', 'enlace'],
     }
 </script>

@@ -49,12 +49,6 @@
     </section>
 </template>
 <style>
-    html, body {
-        /*font-family: 'Open Sans', serif;*/
-        /*font-size: 14px;
-        font-weight: 300;*/
-    }
-
     .hero.is-success {
         background: #F2F6FA;
     }
@@ -64,22 +58,18 @@
         box-shadow: none;
     }
 
-    .box {
-        /* margin-top: 5rem;*/
-    }
-
-    .avatar {
+    /*.avatar {
         margin-top: -70px;
         padding-bottom: 20px;
-    }
+    }*/
 
-    .avatar img {
+    /*.avatar img {
         padding: 5px;
         background: #fff;
         border-radius: 50%;
         -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
         box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
-    }
+    }*/
 
     input {
         font-weight: 300;
@@ -132,7 +122,8 @@
                         }
                     }).then((result) => {
                         if (result.dismiss === 'timer') {
-                            router.push({path: '/login'});
+                            //router.push({path: '/login'});
+                            window.location.replace('/login');
                         }
                     });
                 }

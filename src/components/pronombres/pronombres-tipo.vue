@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>-->
-                    <informacion :descripcion="descripcion"></informacion>
+                    <informacion :descripcion="descripcion" :enlace="enlace"></informacion>
                 </div>
                 <div class="column is-half">
                     <div class="card">
@@ -80,13 +80,12 @@
         </div>
     </div>
 </template>
-<style>
-</style>
 <script>
     import Axios from './../../axios';
     import PronombreInput from './pronombre-input.vue';
     import Informacion from './informacion.vue';
     import swal from 'sweetalert2';
+    import router from './../../router';
 
     export default {
         created(){
@@ -105,6 +104,7 @@
                 respuesta: {},
                 tipo: this.$route.params.tipo,
                 descripcion: '',
+                enlace: '',
             }
         },
         methods: {
@@ -114,10 +114,13 @@
                 this.pronombres = [];
                 Axios.get('/pronombres/' + this.tipo)
                     .then(res => {
+                        console.log(res);
                         this.pronombres = res.data.data.pronombres;
                         this.descripcion = res.data.data.descripcion;
+                        this.enlace = res.data.data.enlace;
+                        this.$store.dispatch('setEjercicioId', res.data.data.ejercicio_id);
                         swal.close();
-                        this.aisnarRespuesta();
+                        this.asignarRespuesta();
                     });
             },
             actualizarRespuesta(value){
@@ -132,11 +135,26 @@
                     }
                 }
                 if (isValid) {
-                    swal(
-                        '',
-                        'Ejercicio terminado',
-                        'success'
-                    );
+                    this.$store.dispatch('saveExerciseToRecord', 1);
+                    swal({
+                        title: 'Ejercicio terminado',
+                        type: 'success',
+                        showCancelButton: true,
+                        confirmButtonText: 'Repetir ejercicio',
+                        cancelButtonText: 'Regresar al menú',
+                        confirmButtonClass: 'button is-primary',
+                        cancelButtonClass: 'button is-danger',
+                        buttonsStyling: false,
+                        reverseButtons: false,
+                    }).then((result) => {
+                        if (result.value) {
+                            this.obtenerPronombres();
+                            // result.dismiss can be 'cancel', 'overlay',
+                            // 'close', and 'timer'
+                        } else if (result.dismiss === 'cancel') {
+                            router.push({path: '/pronombres'});
+                        }
+                    });
                 } else {
                     swal(
                         '',
@@ -167,11 +185,11 @@
                     html: html
                 });
             },
-            aisnarRespuesta(){
+            asignarRespuesta(){
                 this.pronombres.forEach((elem, index) => {
                     this.respuesta[elem['pronombre']] = false;
                 });
-            }
+            },
         },
         watch: {
             '$route'(to, from){

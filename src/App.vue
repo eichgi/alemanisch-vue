@@ -24,7 +24,10 @@
             });
         }
     });
+
     import Header from './components/header/header.vue'
+    import store from './store'
+
     export default {
         name: 'app',
         components: {
@@ -36,7 +39,7 @@
             }
         },
         created(){
-
+            this.$store.dispatch('checkIfLogin');
         }
     }
 </script>

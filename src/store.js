@@ -9,11 +9,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         usuario: null,
-        respuesta: null
+        respuesta: null,
+        ejercicio_id: null,
     },
     mutations: {
         storeUser(state, usuario){
             state.usuario = usuario;
+            localStorage.setItem('usuario', JSON.stringify(usuario));
         },
         storeRespuesta(state, status){
             state.respuesta = status;
@@ -21,6 +23,10 @@ export default new Vuex.Store({
         logout(state){
             state.usuario = null;
             state.respuesta = null;
+            localStorage.removeItem('usuario');
+        },
+        storeEjercicioId(state, id){
+            state.ejercicio_id = id;
         }
     },
     getters: {
@@ -32,6 +38,9 @@ export default new Vuex.Store({
         },
         respuesta(state){
             return state.respuesta;
+        },
+        ejercicio_id(state){
+            return state.ejercicio_id;
         }
     },
     actions: {
@@ -57,6 +66,28 @@ export default new Vuex.Store({
         },
         redirectToHome(){
             router.push({path: '/'});
+        },
+        checkIfLogin({commit}){
+            let usuario = localStorage.getItem('usuario');
+            if (usuario) {
+                usuario = JSON.parse(usuario);
+                commit('storeUser', usuario);
+            }
+        },
+        saveExerciseToRecord({commit}){
+            let usuario = this.getters.usuario;
+            const data = {
+                api_token: usuario.api_token,
+                user_id: usuario.id,
+                ejercicio_id: this.getters.ejercicio_id,
+            };
+            Axios.post('/saveToRecord', data)
+                .then(res => {
+                    console.log(res);
+                });
+        },
+        setEjercicioId({commit}, ejercicio_id){
+            commit('storeEjercicioId', ejercicio_id)
         }
     }
 });
