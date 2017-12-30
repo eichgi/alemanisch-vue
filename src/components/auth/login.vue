@@ -34,7 +34,8 @@
                         <p class="has-text-success" v-if="status">{{status}}</p>
                     </div>
                     <p class="has-text-grey">
-                        <a href="/registro">Registro</a> <!--&nbsp;·&nbsp;
+                        <router-link to="/registro">Registro</router-link>
+                        <!--<a href="/registro">Registro</a> &nbsp;·&nbsp;
                         <a href="../">Forgot Password</a> &nbsp;·&nbsp;
                         <a href="../">Need Help?</a>-->
                     </p>
@@ -68,22 +69,30 @@
 <script>
     import router from './../../router';
     import swal from 'sweetalert2'
+    import store from './../../store';
 
     export default{
-        data(){
+        beforeCreate(){
+            store.commit('storeRespuesta', {});
+        },
+        data()
+        {
             return {
                 email: '',
-                password: ''
+                password: '',
             }
         },
         computed: {
-            status(){
-                let status = this.$store.getters.respuesta;
-                this.lanzarModal(status);
+            status()
+            {
+                let respuesta = this.$store.getters.respuesta;
+                this.lanzarModal(respuesta);
+                return respuesta.mensaje;
             }
         },
         methods: {
-            login(){
+            login()
+            {
                 const formData = {
                     email: this.email,
                     password: this.password
@@ -91,10 +100,11 @@
                 swal.showLoading();
                 this.$store.dispatch('login', formData);
             },
-            lanzarModal(status){
-                if (status) {
+            lanzarModal(respuesta)
+            {
+                if (respuesta.status === 200) {
                     swal({
-                        title: status,
+                        title: respuesta.mensaje,
                         text: 'Redirigiendo...',
                         timer: 1200,
                         onOpen: () => {
@@ -104,7 +114,11 @@
                         if (result.dismiss === 'timer') {
                             router.push({path: '/'});
                         }
-                    })
+                    });
+                } else if (respuesta.status === 401) {
+                    swal({
+                        title: respuesta.mensaje
+                    });
                 }
             },
         },

@@ -86,7 +86,12 @@
 <script>
     import swal from 'sweetalert2';
     import router from './../../router';
+    import store from './../../store';
+
     export default{
+        beforeCreate(){
+            store.commit('storeRespuesta', {});
+        },
         data(){
             return {
                 nombre: '',
@@ -96,9 +101,10 @@
         },
         computed: {
             status(){
-                let status = this.$store.getters.respuesta;
-                this.lanzarModal(status);
-                return status;
+                let respuesta = this.$store.getters.respuesta;
+                //console.log(respuesta);
+                this.lanzarModal(respuesta);
+                return respuesta.mensaje;
             }
         },
         methods: {
@@ -110,24 +116,27 @@
                 };
                 this.$store.dispatch('signUp', formData);
             },
-            lanzarModal(status){
-                console.log(status);
-                if (status) {
+            lanzarModal(respuesta){
+                console.log(respuesta);
+                if (respuesta.status === 200) {
                     swal({
-                        title: status,
-                        text: 'Redirigiendo en 3 segundos...',
-                        timer: 3000,
+                        title: respuesta.mensaje,
+                        text: 'Redirigiendo...',
+                        timer: 1500,
                         onOpen: () => {
                             swal.showLoading()
                         }
                     }).then((result) => {
                         if (result.dismiss === 'timer') {
-                            //router.push({path: '/login'});
-                            window.location.replace('/login');
+                            router.push({path: '/login'});
                         }
                     });
+                } else if (respuesta.status === 401) {
+                    swal({
+                        title: respuesta.mensaje
+                    });
                 }
-            }
+            },
         },
     }
 </script>

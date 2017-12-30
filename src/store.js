@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         usuario: null,
-        respuesta: null,
+        respuesta: {},
         ejercicio_id: null,
     },
     mutations: {
@@ -17,8 +17,8 @@ export default new Vuex.Store({
             state.usuario = usuario;
             localStorage.setItem('usuario', JSON.stringify(usuario));
         },
-        storeRespuesta(state, status){
-            state.respuesta = status;
+        storeRespuesta(state, respuesta){
+            state.respuesta = respuesta;
         },
         logout(state){
             state.usuario = null;
@@ -47,17 +47,33 @@ export default new Vuex.Store({
         login({commit}, authData){
             Axios.post('/login', authData)
                 .then(res => {
+                    let respuesta = {
+                        status: res.status,
+                        mensaje: res.data.status,
+                    };
                     commit('storeUser', res.data.user);
-                    commit('storeRespuesta', res.data.status);
+                    //commit('storeRespuesta', res.data.status);
+                    commit('storeRespuesta', respuesta);
                 }).catch(error => {
                 console.log(error.response);
-                commit('storeRespuesta', error.response.data.status);
+                let respuesta = {
+                    status: error.response.status,
+                    mensaje: error.response.data.status,
+                };
+                console.log(respuesta);
+                commit('storeRespuesta', respuesta);
             });
         },
         signUp({commit}, authData){
             Axios.post('/registro', authData)
                 .then(res => {
-                    commit('storeRespuesta', res.data.status);
+                    let respuesta = {
+                        status: res.status,
+                        mensaje: res.data.status,
+                    };
+                    console.log(respuesta);
+                    //commit('storeRespuesta', res.data.status);
+                    commit('storeRespuesta', respuesta);
                 });
         },
         logout({commit, dispatch}){

@@ -89,7 +89,7 @@
 
     export default {
         created(){
-            //console.log(this.$route.params.tipo);
+
         },
         mounted: function () {
             this.obtenerPronombres();
@@ -110,7 +110,7 @@
         methods: {
             obtenerPronombres()
             {
-                swal.showLoading();
+                this.loading();
                 this.pronombres = [];
                 Axios.get('/pronombres/' + this.tipo)
                     .then(res => {
@@ -190,6 +190,16 @@
                     this.respuesta[elem['pronombre']] = false;
                 });
             },
+            loading(){
+                swal({
+                    title: 'Cargando...',
+                    //text: 'Redirigiendo...',
+                    timer: 1500,
+                    onOpen: () => {
+                        swal.showLoading()
+                    }
+                })
+            }
         },
         watch: {
             '$route'(to, from){

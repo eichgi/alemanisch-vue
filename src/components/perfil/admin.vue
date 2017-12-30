@@ -25,8 +25,8 @@
                     <h1 class="title">
                         Hola, {{nombre}}
                     </h1>
-                    <p>hiramg90@gmail.com</p>
-                    <p>Eres miembro desde 1 de Diciembre de 2017</p>
+                    <p>{{email}}</p>
+                    <p>Eres miembro desde {{fechaRegistro}}</p>
                 </div>
 
                 <br>
@@ -200,6 +200,8 @@
     import Tabla from './pronombres.vue';
     import swal from 'sweetalert2';
     import Axios from './../../axios';
+    import moment from './../../moment';
+
     export default{
         created(){
             swal({
@@ -219,6 +221,13 @@
         computed: {
             nombre(){
                 return this.$store.getters.usuario.name;
+            },
+            email(){
+                return this.$store.getters.usuario.email;
+            },
+            fechaRegistro(){
+                let fecha = this.$store.getters.usuario.created_at;
+                return moment(fecha).format('ll');
             }
         },
         components: {tabla: Tabla},
