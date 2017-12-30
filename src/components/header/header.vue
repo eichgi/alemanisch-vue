@@ -109,15 +109,7 @@
         </div>
     </nav>
 </template>
-<style>
-</style>
 <script>
-    /*let navbar_item = document.querySelector('.navbar-item');
-     console.log(navbar_item);*/
-    /*navbar_item.addEventListener('click', () => {
-     alert('HOLA');
-     });*/
-
     export default {
         data(){
             return {

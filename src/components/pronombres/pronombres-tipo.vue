@@ -124,7 +124,7 @@
                     });
             },
             actualizarRespuesta(value){
-                //console.log(value);
+                console.log(value);
                 this.respuesta[value] = true;
             },
             validar(){
@@ -134,6 +134,7 @@
                         isValid = false;
                     }
                 }
+                console.log('>> ' + isValid);
                 if (isValid) {
                     this.$store.dispatch('saveExerciseToRecord', 1);
                     swal({
@@ -186,6 +187,7 @@
                 });
             },
             asignarRespuesta(){
+                this.respuesta = {};
                 this.pronombres.forEach((elem, index) => {
                     this.respuesta[elem['pronombre']] = false;
                 });

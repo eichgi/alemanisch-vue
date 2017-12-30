@@ -22,11 +22,11 @@
                         <span>Posesivos</span>
                     </a>
                 </router-link>
-                <router-link active-class="is-active" tag="li" class="" to="/pronombres/reflexivos">
+                <!--<router-link active-class="is-active" tag="li" class="" to="/pronombres/reflexivos">
                     <a>
                         <span>Reflexivos</span>
                     </a>
-                </router-link>
+                </router-link>-->
             </ul>
         </div>
 

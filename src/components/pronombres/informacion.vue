@@ -9,7 +9,7 @@
             <div class="content">
                 <p>{{descripcion}}</p>
                 <p>Puedes encontrar más información en el siguiente enlace:
-                    <a :href="enlace">{{enlace}}</a>
+                    <a :href="enlace" target="_blank">{{enlace}}</a>
                 </p>
             </div>
         </div>
