@@ -24,23 +24,6 @@
                         </div>
                     </div>
                     <br>
-                    <!--<div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                Información
-                            </p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                <p>Los pronombres personales en Nominativo es una de las primeras cosas que hay
-                                    aprender en alemán, dado que son básicos para realizar nuestras primeras
-                                    oraciones.</p>
-
-                                <p>Puedes encontrar más información en el siguiente enlace:
-                                    https://www.alemansencillo.com/pronombres-en-aleman</p>
-                            </div>
-                        </div>
-                    </div>-->
                     <informacion :descripcion="descripcion" :enlace="enlace"></informacion>
                 </div>
                 <div class="column is-half">
@@ -134,9 +117,8 @@
                         isValid = false;
                     }
                 }
-                console.log('>> ' + isValid);
                 if (isValid) {
-                    this.$store.dispatch('saveExerciseToRecord', 1);
+                    this.$store.dispatch('saveExerciseToRecord');
                     swal({
                         title: 'Ejercicio terminado',
                         type: 'success',
@@ -195,7 +177,6 @@
             loading(){
                 swal({
                     title: 'Cargando...',
-                    //text: 'Redirigiendo...',
                     timer: 1500,
                     onOpen: () => {
                         swal.showLoading()

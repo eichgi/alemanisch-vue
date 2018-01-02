@@ -1,30 +1,25 @@
 <template>
     <nav class="navbar is-primary">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                <!--<img src="https://bulma.io/images/bulma-logo-white.png"
-                     alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
-                <b>Alemannisch!</b>
-
-            </a>
+            <router-link class="navbar-item" to="/" tag="a"><b>Alemannisch!</b></router-link>
             <div class="navbar-burger burger" data-target="navMenuColordark-example">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-
         <div id="navMenuColordark-example" class="navbar-menu">
             <div class="navbar-start">
-                <router-link class="navbar-item" to="/">Inicio</router-link>
+                <!--<router-link class="navbar-item" to="/">Inicio</router-link>-->
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a href="#" class="navbar-link">Ejercicios</a>
                     <div class="navbar-dropdown">
-                        <router-link class="navbar-item" to="/pronombres/nominativos">Pronombres
+                        <router-link class="navbar-item" to="/pronombres/nominativos">
+                            Pronombres <span class="tag is-success">Nuevo</span>
                         </router-link>
                         <hr class="navbar-divider">
-                        <router-link class="navbar-item" to="/">
-                            Verbos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                        <router-link class="navbar-item" to="/verbos">
+                            Verbos &nbsp;&nbsp;<span class="tag is-info">En construcción</span>
                         </router-link>
                         <router-link class="navbar-item" to="/">
                             Articulos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>

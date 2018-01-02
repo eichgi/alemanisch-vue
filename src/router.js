@@ -5,11 +5,11 @@ import Home from './components/home/home.vue'
 import Login from './components/auth/login.vue'
 import Registro from './components/auth/registro.vue'
 import Logout from './components/auth/logout.vue'
-import Perfil from './components/perfil/perfil.vue'
 import Admin from './components/perfil/admin.vue'
-import Pronombres from './components/pronombres/pronombres.vue'
 import Personales from './components/pronombres/personales.vue'
 import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
+import Verbos from './components/verbos/verbos.vue'
+import Categoria from './components/verbos/categoria.vue'
 
 Vue.use(VueRouter);
 
@@ -85,6 +85,16 @@ const routes = [
             {
                 path: ':tipo',
                 component: PronombreTipo
+            }
+        ]
+    },
+    {
+        path: '/verbos',
+        component: Verbos,
+        children: [
+            {
+                path: ':categoria',
+                component: Categoria
             }
         ]
     }
