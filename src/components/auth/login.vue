@@ -75,6 +75,9 @@
         beforeCreate(){
             store.commit('storeRespuesta', {});
         },
+        created(){
+
+        },
         data()
         {
             return {

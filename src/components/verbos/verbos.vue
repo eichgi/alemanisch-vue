@@ -43,7 +43,7 @@
         </div>-->
         <div class="tabs is-centered is-toggle is-fullwidth">
             <ul>
-                <router-link active-class="is-active" exact tag="li" to="/verbos/regulares?nivel=1">
+                <router-link active-class="is-active" exact tag="li" to="/verbos/regulares">
                     <a>
                         <span>Regulares</span>
                     </a>

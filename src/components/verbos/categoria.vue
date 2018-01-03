@@ -6,6 +6,23 @@
                     <div class="card">
                         <header class="card-header">
                             <p class="card-header-title">
+                                Niveles
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <div class="buttons has-addons is-centered">
+                                    <span class="button nivel" @click="cambiarNivel(index+1, $event)"
+                                          v-for="(nivel, index) in niveles" :class="index==0 ? 'is-selected' : ''">{{index+1}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
                                 Instrucciones
                             </p>
                         </header>
@@ -44,11 +61,6 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <!--<td>
-                                <button class="button is-info is-medium is-fullwidth"
-                                        @click="mostrarGuia">Guía
-                                </button>
-                            </td>-->
                             <td colspan="3">
                                 <button class="button is-primary is-medium is-fullwidth"
                                         @click="validar">Terminar
@@ -148,7 +160,7 @@
                 verbos: [],
                 respuesta: {},
                 categoria: this.$route.params.categoria,
-                nivel: this.$route.query.nivel,
+                nivel: 1,
                 niveles: 0,
             }
         },
@@ -157,14 +169,13 @@
         },
         methods: {
             cargarNiveles(){
-                //this.loading();
+                this.loading();
                 Axios.get('/verbos/' + this.categoria + '/niveles')
                     .then(res => {
                         this.niveles = res.data.niveles;
                     });
             },
             cargarVerbos(){
-                this.loading();
                 this.verbos = [];
                 Axios.get('/verbos/' + this.categoria + '/' + this.nivel)
                     .then(res => {
@@ -200,26 +211,72 @@
                     }
                 }
                 if (isValid) {
-                    this.$store.dispatch('saveExerciseToRecord', 1);
-                    swal({
-                        title: 'Ejercicio terminado',
-                        type: 'success',
-                        showCancelButton: true,
-                        confirmButtonText: 'Repetir ejercicio',
-                        cancelButtonText: 'Regresar al menú',
-                        confirmButtonClass: 'button is-primary',
-                        cancelButtonClass: 'button is-danger',
-                        buttonsStyling: false,
-                        reverseButtons: false,
-                    }).then((result) => {
-                        if (result.value) {
-                            this.cargarVerbos();
-                            // result.dismiss can be 'cancel', 'overlay',
-                            // 'close', and 'timer'
-                        } else if (result.dismiss === 'cancel') {
-                            router.push({path: '/verbos'});
-                        }
-                    });
+                    /**
+                     * 1.- Si el usuario esta autenticado, guardar ejercicio
+                     * 2.- Sino, preguntar si quiere acceder
+                     * 2.1- Si accede guardar ejercicio
+                     * 2.2 Si declina redirigir a Inicio
+                     * */
+
+                    if (this.$store.getters.estaAutenticado) {
+                        this.$store.dispatch('saveExerciseToRecord');
+                        swal({
+                            title: 'Ejercicio terminado',
+                            type: 'success',
+                            showCancelButton: true,
+                            confirmButtonText: 'Repetir ejercicio',
+                            cancelButtonText: 'Regresar al menú',
+                            confirmButtonClass: 'button is-primary',
+                            cancelButtonClass: 'button is-danger',
+                            buttonsStyling: false,
+                            reverseButtons: false,
+                        }).then((result) => {
+                            if (result.value) {
+                                this.cargarVerbos();
+                            } else if (result.dismiss === 'cancel') {
+                                router.push({path: '/verbos'});
+                            }
+                        });
+                    } else {
+                        swal({
+                            text: "¿Deseas acceder para registrar el ejercicio?",
+                            type: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Acceder',
+                            cancelButtonText: 'Después',
+                            confirmButtonClass: 'button is-success',
+                            cancelButtonClass: 'button is-danger',
+                            buttonsStyling: false,
+                            reverseButtons: true
+                        }).then((result) => {
+                            if (result.value) {
+                                this.$store.dispatch('saveGuestsExercises');
+                                router.push({path: '/login'});
+                            } else if (result.dismiss === 'cancel') {
+                                router.push({path: '/verbos'});
+                            }
+                        });
+                    }
+
+                    /*swal({
+                     title: 'Ejercicio terminado',
+                     type: 'success',
+                     showCancelButton: true,
+                     confirmButtonText: 'Repetir ejercicio',
+                     cancelButtonText: 'Regresar al menú',
+                     confirmButtonClass: 'button is-primary',
+                     cancelButtonClass: 'button is-danger',
+                     buttonsStyling: false,
+                     reverseButtons: false,
+                     }).then((result) => {
+                     if (result.value) {
+                     this.cargarVerbos();
+                     // result.dismiss can be 'cancel', 'overlay',
+                     // 'close', and 'timer'
+                     } else if (result.dismiss === 'cancel') {
+                     router.push({path: '/verbos'});
+                     }
+                     });*/
                 } else {
                     swal(
                         '',
@@ -251,7 +308,7 @@
                 });
             },
             cambiarNivel(nivel, event){
-                router.push({path: '/verbos/' + this.categoria, query: {nivel}});
+                //router.push({path: '/verbos/' + this.categoria, query: {nivel}});
                 this.nivel = nivel;
                 this.cargarVerbos();
                 document.querySelectorAll('.nivel').forEach((elem) => {

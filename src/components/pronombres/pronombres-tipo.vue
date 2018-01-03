@@ -118,26 +118,43 @@
                     }
                 }
                 if (isValid) {
-                    this.$store.dispatch('saveExerciseToRecord');
-                    swal({
-                        title: 'Ejercicio terminado',
-                        type: 'success',
-                        showCancelButton: true,
-                        confirmButtonText: 'Repetir ejercicio',
-                        cancelButtonText: 'Regresar al menú',
-                        confirmButtonClass: 'button is-primary',
-                        cancelButtonClass: 'button is-danger',
-                        buttonsStyling: false,
-                        reverseButtons: false,
-                    }).then((result) => {
-                        if (result.value) {
-                            this.obtenerPronombres();
-                            // result.dismiss can be 'cancel', 'overlay',
-                            // 'close', and 'timer'
-                        } else if (result.dismiss === 'cancel') {
-                            router.push({path: '/pronombres'});
-                        }
-                    });
+                    if (this.$store.getters.estaAutenticado) {
+                        this.$store.dispatch('saveExerciseToRecord');
+                        swal({
+                            title: 'Ejercicio terminado',
+                            type: 'success',
+                            showCancelButton: true,
+                            confirmButtonText: 'Repetir ejercicio',
+                            cancelButtonText: 'Regresar al menú',
+                            confirmButtonClass: 'button is-primary',
+                            cancelButtonClass: 'button is-danger',
+                            buttonsStyling: false,
+                            reverseButtons: false,
+                        }).then((result) => {
+                            if (result.value) {
+                                this.obtenerPronombres();
+                            } else if (result.dismiss === 'cancel') {
+                                router.push({path: '/pronombres'});
+                            }
+                        });
+                    } else {
+                        swal({
+                            text: "¿Deseas acceder para registrar el ejercicio?",
+                            type: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Acceder',
+                            cancelButtonText: 'Después',
+                            confirmButtonClass: 'button is-success',
+                            cancelButtonClass: 'button is-danger',
+                            buttonsStyling: false,
+                            reverseButtons: true
+                        }).then((result) => {
+                            if (result.value) {
+                                this.$store.dispatch('saveGuestsExercises');
+                                router.push({path: '/login'});
+                            }
+                        });
+                    }
                 } else {
                     swal(
                         '',

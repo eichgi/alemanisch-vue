@@ -11,6 +11,7 @@ export default new Vuex.Store({
         usuario: null,
         respuesta: {},
         ejercicio_id: null,
+        guestsExercises: [],
     },
     mutations: {
         storeUser(state, usuario){
@@ -27,7 +28,13 @@ export default new Vuex.Store({
         },
         storeEjercicioId(state, id){
             state.ejercicio_id = id;
-        }
+        },
+        storeGuestsExercise(state, exercise){
+            state.guestsExercises.push(exercise);
+        },
+        clearGuestsExercises(state){
+            state.guestsExercises = [];
+        },
     },
     getters: {
         estaAutenticado(state){
@@ -41,10 +48,13 @@ export default new Vuex.Store({
         },
         ejercicio_id(state){
             return state.ejercicio_id;
+        },
+        guestsExercises(state){
+            return state.guestsExercises;
         }
     },
     actions: {
-        login({commit}, authData){
+        login({commit, dispatch}, authData){
             Axios.post('/login', authData)
                 .then(res => {
                     let respuesta = {
@@ -52,15 +62,13 @@ export default new Vuex.Store({
                         mensaje: res.data.status,
                     };
                     commit('storeUser', res.data.user);
-                    //commit('storeRespuesta', res.data.status);
                     commit('storeRespuesta', respuesta);
+                    dispatch('saveExercisesAfterLogin');
                 }).catch(error => {
-                console.log(error.response);
                 let respuesta = {
                     status: error.response.status,
                     mensaje: error.response.data.status,
                 };
-                console.log(respuesta);
                 commit('storeRespuesta', respuesta);
             });
         },
@@ -71,7 +79,6 @@ export default new Vuex.Store({
                         status: res.status,
                         mensaje: res.data.status,
                     };
-                    console.log(respuesta);
                     //commit('storeRespuesta', res.data.status);
                     commit('storeRespuesta', respuesta);
                 });
@@ -90,13 +97,16 @@ export default new Vuex.Store({
                 commit('storeUser', usuario);
             }
         },
-        saveExerciseToRecord({commit}){
+        saveExerciseToRecord({}, exercise = null){
+            console.log(exercise);
             let usuario = this.getters.usuario;
             const data = {
                 api_token: usuario.api_token,
                 user_id: usuario.id,
-                ejercicio_id: this.getters.ejercicio_id,
+                ejercicio_id: exercise || this.getters.ejercicio_id,
+                //ejercicio_id: exercise,
             };
+            console.log(data);
             Axios.post('/saveToRecord', data)
                 .then(res => {
                     console.log(res);
@@ -104,6 +114,22 @@ export default new Vuex.Store({
         },
         setEjercicioId({commit}, ejercicio_id){
             commit('storeEjercicioId', ejercicio_id)
-        }
+        },
+        saveGuestsExercises({commit}){
+            commit('storeGuestsExercise', this.getters.ejercicio_id);
+        },
+        saveExercisesAfterLogin({commit, dispatch}){
+            let exercises = this.getters.guestsExercises;
+            console.log(exercises);
+            for (const exercise of exercises) {
+                console.log(exercise);
+                dispatch('saveExerciseToRecord', exercise);
+            }
+            //commit('clearGuestsExercises');
+            console.log('It\'s supposed I already have done with this...');
+        },
+        clearGuestsExercises({commit}){
+            commit('clearGuestsExercises');
+        },
     }
 });
