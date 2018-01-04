@@ -10,8 +10,8 @@
                     </ul>
                     <p class="menu-label">Historial de ejercicios</p>
                     <ul class="menu-list">
-                        <li><a>Pronombres</a></li>
-                        <li><a>Verbos</a></li>
+                        <li><a href="#pronombres">Pronombres</a></li>
+                        <li><a href="#verbos">Verbos</a></li>
                         <li><a>Artículos</a></li>
                         <li><a>Sustantivos</a></li>
                     </ul>
@@ -34,9 +34,9 @@
                 <hr>
                 <div class="tile is-ancestor">
                     <div class="tile is-12 is-vertical is-parent">
-                        <div class="tile is-child box">
-                            <p class="title">Pronombres</p>
-                            <tabla :historial="historial"></tabla>
+                        <div :id="index" class="tile is-child box" v-for="(record, index) in historial">
+                            <p class="title">{{index}}</p>
+                            <tabla :historial="record"></tabla>
                         </div>
                     </div>
                 </div>
@@ -196,8 +196,9 @@
         </div>
     </div>
 </template>
+<style scoped></style>
 <script>
-    import Tabla from './pronombres.vue';
+    import Tabla from './categoria.vue';
     import swal from 'sweetalert2';
     import Axios from './../../axios';
     import moment from './../../moment';
@@ -236,7 +237,9 @@
                 let usuario_id = this.$store.getters.usuario.id;
                 Axios.post('/getRecord', {usuario_id})
                     .then(res => {
-                        this.historial = res.data.record;
+                        console.log(res);
+                        //this.historial = res.data.record;
+                        this.historial = res.data.categories;
                         swal.close();
                     });
             }
