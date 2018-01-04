@@ -35,27 +35,16 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                                <!--<div class="field is-horizontal">
-                                    <div class="field-label is-normal">
-                                        <label class="label">Yo</label>
-                                    </div>
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="control">
-                                                <input class="input is-success"
-                                                       type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
                                 <template v-for="pronombre in pronombres">
-                                    <pronombre :pronombre="pronombre"
-                                               v-on:actualizar="actualizarRespuesta"></pronombre>
+                                    <pronombre-input :pronombre="pronombre"
+                                               v-on:actualizar="actualizarRespuesta"></pronombre-input>
                                 </template>
                             </div>
                         </div>
                         <footer class="card-footer">
-                            <a href=# class="card-footer-item" @click.prevent="validar">Terminar</a>
+                            <button class="button is-primary is-medium is-fullwidth"
+                                    @click="validar">Terminar
+                            </button>
                         </footer>
                     </div>
                 </div>
@@ -65,7 +54,7 @@
 </template>
 <script>
     import Axios from './../../axios';
-    import PronombreInput from './pronombre-input.vue';
+    import Input from './input.vue';
     import Informacion from './informacion.vue';
     import swal from 'sweetalert2';
     import router from './../../router';
@@ -78,7 +67,7 @@
             this.obtenerPronombres();
         },
         components: {
-            'pronombre': PronombreInput,
+            'pronombre-input': Input,
             'informacion': Informacion,
         },
         data(){

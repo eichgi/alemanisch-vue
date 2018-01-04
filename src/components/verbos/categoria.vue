@@ -35,8 +35,8 @@
                                         cuantas veces sea necesario.
                                     </li>
                                 </ul>
-                                <p>Todos los verbos regulares alemanes (regelmäßige Verben) son también verbos débiles
-                                    (schwache Verben), es decir son verbos que no cambian su raíz en la conjugación.
+                                <p class="has-text-justified">Todos los verbos regulares alemanes son también verbos débiles, es decir son verbos
+                                    que no cambian su raíz en la conjugación.
                                     En la conjugación del verbo en alemán en presente añadimos unas desinencias o
                                     terminaciones a la raíz del verbo para formar su conjugación: wohn–en.
                                     La mayoría de los verbos en alemán se conjugan como el verbo wohnen, pero tambien
@@ -73,57 +73,6 @@
             </div>
         </div>
     </div>
-
-
-    <!--<div class="buttons has-addons is-centered">
-        <span class="button nivel" @click="cambiarNivel(index+1, $event)"
-              v-for="(nivel, index) in niveles" :class="index==0 ? 'is-selected' : ''">{{index+1}}</span>
-        &lt;!&ndash;<span class="button" @click="cambiarNivel(1)">1</span>
-        <span class="button" @click="cambiarNivel(2)">2</span>
-        <span class="button" @click="cambiarNivel(3)">3</span>
-        <span class="button" @click="cambiarNivel(4)">4</span>
-        <span class="button" @click="cambiarNivel(5)">5</span>&ndash;&gt;
-    </div>
-    <table class="table is-striped is-hoverable is-fullwidth">
-        <thead>
-        <tr>
-            <th>Alemán</th>
-            <th>Español</th>
-            <th>Ejemplo</th>
-        </tr>
-        </thead>
-        <tbody>
-        <template v-for="verbo in verbos">
-            <renglon :verbo="verbo" v-on:actualizar="actualizarRespuesta"></renglon>
-        </template>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td>
-                <button class="button is-info is-medium is-fullwidth"
-                        @click="mostrarGuia">Guía
-                </button>
-            </td>
-            <td colspan="2">
-                <button class="button is-primary is-medium is-fullwidth"
-                        @click="validar">Terminar
-                </button>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-    <article class="message is-info">
-        <div class="message-header">
-            <p>Más información</p>
-        </div>
-        <div class="message-body">
-            Todos los verbos regulares alemanes (regelmäßige Verben) son también verbos débiles (schwache Verben),
-            es decir son verbos que no cambian su raíz en la conjugación.
-            En la conjugación del verbo en alemán en presente añadimos unas desinencias o terminaciones a la raíz
-            del verbo para formar su conjugación: wohn–en.
-            La mayoría de los verbos en alemán se conjugan como el verbo wohnen, pero tambien hay excepciones.
-        </div>
-    </article>-->
 </template>
 <style scoped>
     .buttons {

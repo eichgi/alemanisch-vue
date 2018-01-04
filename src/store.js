@@ -79,7 +79,6 @@ export default new Vuex.Store({
                         status: res.status,
                         mensaje: res.data.status,
                     };
-                    //commit('storeRespuesta', res.data.status);
                     commit('storeRespuesta', respuesta);
                 });
         },

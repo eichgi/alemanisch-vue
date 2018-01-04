@@ -2,13 +2,10 @@
     <section class="hero is-success is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
+                <div class="column is-6 is-offset-3">
                     <h3 class="title has-text-grey">Acceso</h3>
-                    <p class="subtitle has-text-grey">Por favor inicia sesión</p>
+                    <p class="subtitle has-text-grey">Ingresa tus datos</p>
                     <div class="box">
-                        <!--<figure class="avatar">
-                            <img src="https://placehold.it/128x128">
-                        </figure>-->
                         <form>
                             <div class="field">
                                 <div class="control">
@@ -35,9 +32,6 @@
                     </div>
                     <p class="has-text-grey">
                         <router-link to="/registro">Registro</router-link>
-                        <!--<a href="/registro">Registro</a> &nbsp;·&nbsp;
-                        <a href="../">Forgot Password</a> &nbsp;·&nbsp;
-                        <a href="../">Need Help?</a>-->
                     </p>
                 </div>
             </div>

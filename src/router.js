@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import store from './store'
 import Home from './components/home/home.vue'
 import Login from './components/auth/login.vue'
-import Registro from './components/auth/registro.vue'
+import Signup from './components/auth/signup.vue'
 import Logout from './components/auth/logout.vue'
 import Admin from './components/perfil/admin.vue'
 import Personales from './components/pronombres/personales.vue'
@@ -31,7 +31,7 @@ const routes = [
     },
     {
         path: '/registro',
-        component: Registro,
+        component: Signup,
         beforeEnter(to, from, next){
             if (store.getters.estaAutenticado) {
                 next('/');

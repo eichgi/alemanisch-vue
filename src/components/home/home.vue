@@ -1,42 +1,15 @@
 <template>
     <section class="hero is-info is-fullheight">
-        <!--<div class="hero-head">
-           <nav class="navbar">
-              <div class="container">
-                 <div class="navbar-brand">
-                    <a class="navbar-item" href="../">
-                       <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
-                    </a>
-                    <span class="navbar-burger burger" data-target="navbarMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-                 </div>
-                 <div id="navbarMenu" class="navbar-menu">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
                     <div class="navbar-end">
-                       <a class="navbar-item is-active">
-                          Home
-                       </a>
-                       <a class="navbar-item">
-                          Examples
-                       </a>
-                       <a class="navbar-item">
-                          Documentation
-                       </a>
-                       <span class="navbar-item">
-                  <a class="button is-white is-outlined is-small" href="https://github.com/dansup/bulma-templates/blob/master/templates/landing.html">
-                    <span class="icon">
-                      <i class="fa fa-github"></i>
-                    </span>
-                    <span>View Source</span>
-                  </a>
-                </span>
+                        <!--<a class="navbar-item">Acceder</a>-->
+                        <router-link class="navbar-item" to="/login" tag="a">Acceder</router-link>
                     </div>
-                 </div>
-              </div>
-           </nav>
-        </div>-->
+                </div>
+            </nav>
+        </div>
 
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -63,6 +36,16 @@
             </div>
         </div>
 
+        <!--<div class="hero-foot">
+            <nav class="tabs">
+                <div class="container">
+                    <ul>
+                        <li><a>Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>-->
+
     </section>
     <!--<section class="hero is-info is-fullheight">
        <div class="hero-body">
@@ -84,9 +67,10 @@
 
     .hero.is-info {
         background: linear-gradient(
-                rgba(0, 0, 0, 0.5),
-                rgba(0, 0, 0, 0.5)
-        ), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.3)
+        /*), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;*/
+        ), url('./../../assets/background.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
