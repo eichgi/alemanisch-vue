@@ -13,6 +13,7 @@ import Categoria from './components/verbos/categoria.vue'
 
 Vue.use(VueRouter);
 
+let vamoaver = '';
 const routes = [
     {
         path: '/',
@@ -62,22 +63,6 @@ const routes = [
             }
         }
     },
-    /*{
-     path: '/pronombres',
-     component: Pronombres,
-     children: [
-     {
-     path: 'personales',
-     component: Personales,
-     children: [
-     {
-     path: ':tipo',
-     component: PronombreTipo
-     }
-     ]
-     }
-     ]
-     },*/
     {
         path: '/pronombres',
         component: Personales,
@@ -94,7 +79,7 @@ const routes = [
         children: [
             {
                 path: ':categoria',
-                component: Categoria
+                component: Categoria,
             }
         ]
     }

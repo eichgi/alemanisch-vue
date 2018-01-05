@@ -3,9 +3,29 @@
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
+                    <div class="navbar-start">
+                        <!--<div class="navbar-item has-dropdown is-hoverable">
+                            <a href="#" class="navbar-link">Ejercicios</a>
+                            <div class="navbar-dropdown">
+                                <router-link class="navbar-item" to="/pronombres/nominativos">
+                                    Pronombres <span class="tag is-success">Nuevo</span>
+                                </router-link>
+                                <hr class="navbar-divider">
+                                <router-link class="navbar-item" to="/verbos">
+                                    Verbos &nbsp;&nbsp;<span class="tag is-info">En construcción</span>
+                                </router-link>
+                                <router-link class="navbar-item" to="/">
+                                    Articulos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                                </router-link>
+                                <router-link class="navbar-item" to="/">
+                                    Sustantivos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                                </router-link>
+                            </div>
+                        </div>-->
+                    </div>
                     <div class="navbar-end">
-                        <!--<a class="navbar-item">Acceder</a>-->
-                        <router-link class="navbar-item" to="/login" tag="a">Acceder</router-link>
+                        <router-link class="navbar-item" to="/login" tag="a" v-if="!auth">Acceder</router-link>
+                        <router-link class="navbar-item" to="/perfil" tag="a" v-if="auth">Mi cuenta</router-link>
                     </div>
                 </div>
             </nav>
@@ -35,30 +55,7 @@
                 </div>
             </div>
         </div>
-
-        <!--<div class="hero-foot">
-            <nav class="tabs">
-                <div class="container">
-                    <ul>
-                        <li><a>Login</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>-->
-
     </section>
-    <!--<section class="hero is-info is-fullheight">
-       <div class="hero-body">
-          <div class="container has-text-centered">
-             <h1 class="title">
-                Bienvenido a Alemannisch
-             </h1>
-             <h2 class="subtitle">
-                Aprende alemán!
-             </h2>
-          </div>
-       </div>
-    </section>-->
 </template>
 <style scoped>
     html, body {
@@ -104,6 +101,11 @@
                     text: 'Puedes ver tu historial de ejercicios en tu perfil'
                 });
             }
-        }
+        },
+        computed: {
+            auth(){
+                return this.$store.getters.estaAutenticado;
+            }
+        },
     }
 </script>

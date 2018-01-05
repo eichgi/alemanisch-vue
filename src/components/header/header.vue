@@ -38,7 +38,7 @@
                     <a class="navbar-link">Opciones</a>
                     <div class="navbar-dropdown">
                         <router-link class="navbar-item" to="/perfil">
-                            Perfil
+                            Mi cuenta
                         </router-link>
                         <router-link class="navbar-item" to="/logout">
                             Cerrar sesión

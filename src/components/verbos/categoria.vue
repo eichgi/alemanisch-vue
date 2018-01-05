@@ -35,7 +35,8 @@
                                         cuantas veces sea necesario.
                                     </li>
                                 </ul>
-                                <p class="has-text-justified">Todos los verbos regulares alemanes son también verbos débiles, es decir son verbos
+                                <p class="has-text-justified">Todos los verbos regulares alemanes son también verbos
+                                    débiles, es decir son verbos
                                     que no cambian su raíz en la conjugación.
                                     En la conjugación del verbo en alemán en presente añadimos unas desinencias o
                                     terminaciones a la raíz del verbo para formar su conjugación: wohn–en.
@@ -100,6 +101,12 @@
     import router from './../../router';
 
     export default{
+        beforeRouteUpdate (to, from, next) {
+            this.categoria = to.params.categoria;
+            this.cargarNiveles();
+            this.cargarVerbos();
+            next();
+        },
         created(){
             this.cargarNiveles();
             this.cargarVerbos();
@@ -128,7 +135,6 @@
                 this.verbos = [];
                 Axios.get('/verbos/' + this.categoria + '/' + this.nivel)
                     .then(res => {
-                        console.log(res);
                         swal.close();
                         this.verbos = res.data.verbos;
                         this.$store.dispatch('setEjercicioId', res.data.ejercicio_id);
@@ -257,23 +263,12 @@
                 });
             },
             cambiarNivel(nivel, event){
-                //router.push({path: '/verbos/' + this.categoria, query: {nivel}});
                 this.nivel = nivel;
                 this.cargarVerbos();
                 document.querySelectorAll('.nivel').forEach((elem) => {
                     elem.classList.remove('is-selected');
                 });
-
-                console.log(event.target);
                 event.target.classList.add('is-selected');
-            },
-            watch: {
-                '$route'(to, from){
-                    this.categoria = to.params.categoria;
-                    this.nivel = to.query.nivel;
-                    console.log(this.categoria + ' <> ' + this.nivel);
-                    //this.obtenerPronombres();
-                }
             },
         }
     }
