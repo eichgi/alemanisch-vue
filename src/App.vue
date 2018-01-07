@@ -2,6 +2,7 @@
     <div id="app">
         <app-header></app-header>
         <router-view></router-view>
+        <app-footer></app-footer>
     </div>
 </template>
 
@@ -26,17 +27,17 @@
     });
 
     import Header from './components/header/header.vue'
+    import Footer from './components/footer/footer.vue'
     import store from './store'
 
     export default {
         name: 'app',
         components: {
-            'app-header': Header
+            'app-header': Header,
+            'app-footer': Footer,
         },
         data () {
-            return {
-                msg: 'Welcome to Your Vue.js App'
-            }
+            return {}
         },
         created(){
             this.$store.dispatch('checkIfLogin');

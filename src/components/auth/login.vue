@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-on="http://www.w3.org/1999/xhtml">
     <section class="hero is-success is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -6,27 +6,27 @@
                     <h3 class="title has-text-grey">Acceso</h3>
                     <p class="subtitle has-text-grey">Ingresa tus datos</p>
                     <div class="box">
-                        <form>
+                        <form v-on:submit.prevent="login">
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" type="email" v-model="email" placeholder="Email"
                                            autofocus="">
                                 </div>
                             </div>
-
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" type="password" v-model="password"
                                            placeholder="Contraseña">
                                 </div>
                             </div>
-                            <!--<div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Remember me
-                                </label>
-                            </div>-->
-                            <a class="button is-block is-info is-large" @click="login">Entrar</a>
+                            <div class="field">
+                                <div class="control">
+                                    <button type="submit" class="button is-block is-info is-large" @click="login">
+                                        Entrar
+                                    </button>
+                                </div>
+                            </div>
+                            <!--<a class="button is-block is-info is-large" @click="login">Entrar</a>-->
                         </form>
                         <p class="has-text-success" v-if="status">{{status}}</p>
                     </div>
@@ -38,7 +38,7 @@
         </div>
     </section>
 </template>
-<style>
+<style scoped>
     .hero.is-success {
         background: #F2F6FA;
     }
@@ -58,6 +58,10 @@
 
     p.subtitle {
         padding-top: 1rem;
+    }
+
+    button {
+        width: 100%;
     }
 </style>
 <script>
