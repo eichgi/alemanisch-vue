@@ -11,7 +11,7 @@
         <div id="navMenuColordark-example" class="navbar-menu">
             <div class="navbar-start">
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a href="#" class="navbar-link">Ejercicios</a>
+                    <router-link class="navbar-link" tag="a" to="/ejercicios">Ejercicios</router-link>
                     <div class="navbar-dropdown">
                         <router-link class="navbar-item" to="/pronombres/nominativos">
                             Pronombres <!--<span class="tag is-success">Nuevo</span>-->
@@ -21,10 +21,10 @@
                         </router-link>
                         <hr class="navbar-divider">
                         <router-link class="navbar-item" to="/">
-                            Articulos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                            Sustantivos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
                         </router-link>
                         <router-link class="navbar-item" to="/">
-                            Sustantivos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                            Conjugador &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
                         </router-link>
                     </div>
                 </div>

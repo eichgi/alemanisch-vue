@@ -4,28 +4,11 @@
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-start">
-                        <!--<div class="navbar-item has-dropdown is-hoverable">
-                            <a href="#" class="navbar-link">Ejercicios</a>
-                            <div class="navbar-dropdown">
-                                <router-link class="navbar-item" to="/pronombres/nominativos">
-                                    Pronombres <span class="tag is-success">Nuevo</span>
-                                </router-link>
-                                <hr class="navbar-divider">
-                                <router-link class="navbar-item" to="/verbos">
-                                    Verbos &nbsp;&nbsp;<span class="tag is-info">En construcción</span>
-                                </router-link>
-                                <router-link class="navbar-item" to="/">
-                                    Articulos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
-                                </router-link>
-                                <router-link class="navbar-item" to="/">
-                                    Sustantivos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
-                                </router-link>
-                            </div>
-                        </div>-->
+                        <router-link class="navbar-item" to="/ejercicios" tag="a">Ejercicios</router-link>
                     </div>
                     <div class="navbar-end">
                         <router-link class="navbar-item" to="/login" tag="a" v-if="!auth">Acceder</router-link>
-                        <router-link class="navbar-item" to="/perfil" tag="a" v-if="auth">Mi cuenta</router-link>
+                        <router-link class="navbar-item" to="/perfil" tag="a" v-else>Mi cuenta</router-link>
                     </div>
                 </div>
             </nav>
@@ -40,18 +23,6 @@
                     <h2 class="subtitle">
                         Aprende alemán practicando!
                     </h2>
-                    <!--<div class="box">
-                       <div class="field is-grouped">
-                          <p class="control is-expanded">
-                             <input class="input" type="text" placeholder="Enter your email">
-                          </p>
-                          <p class="control">
-                             <a class="button is-info">
-                                Notify Me
-                             </a>
-                          </p>
-                       </div>
-                    </div>-->
                 </div>
             </div>
         </div>
@@ -67,7 +38,7 @@
                 rgba(0, 0, 0, 0.1),
                 rgba(0, 0, 0, 0.3)
         /*), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;*/
-        ), url('./../../assets/background.jpg') no-repeat center center fixed;
+        ), url('../../assets/background.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

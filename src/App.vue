@@ -26,8 +26,8 @@
         }
     });
 
-    import Header from './components/header/header.vue'
-    import Footer from './components/footer/footer.vue'
+    import Header from './components/layouts/header.vue'
+    import Footer from './components/layouts/footer.vue'
     import store from './store'
 
     export default {

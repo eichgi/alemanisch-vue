@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store'
-import Home from './components/home/home.vue'
+import Home from './components/layouts/home.vue'
 import Login from './components/auth/login.vue'
 import Signup from './components/auth/signup.vue'
 import Logout from './components/auth/logout.vue'
 import Admin from './components/perfil/admin.vue'
+import Ejercicios from './components/layouts/ejercicios.vue'
 import Personales from './components/pronombres/personales.vue'
 import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
 import Verbos from './components/verbos/verbos.vue'
@@ -13,7 +14,6 @@ import Categoria from './components/verbos/categoria.vue'
 
 Vue.use(VueRouter);
 
-let vamoaver = '';
 const routes = [
     {
         path: '/',
@@ -51,6 +51,10 @@ const routes = [
                 next('/');
             }
         }
+    },
+    {
+        path: '/ejercicios',
+        component: Ejercicios,
     },
     {
         path: '/perfil',
