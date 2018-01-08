@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-info is-fullheight">
+    <section class="hero is-primary is-fullheight">
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
@@ -33,11 +33,10 @@
         font-family: 'Open Sans', serif;
     }
 
-    .hero.is-info {
+    .hero.is-primary {
         background: linear-gradient(
                 rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.3)
-        /*), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;*/
+                rgba(0, 0, 0, 0.3) /*), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;*/
         ), url('../../assets/background.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -57,6 +56,10 @@
 
     nav .navbar {
         display: none;
+    }
+
+    a.navbar-item {
+        background: none !important;
     }
 </style>
 <script>
