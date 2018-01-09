@@ -6,11 +6,11 @@
                     <h3 class="title has-text-grey has-text-centered">Contacto</h3>
                     <p class="subtitle has-text-grey has-text-centered">Llena el siguiente formulario</p>
                     <div class="box">
-                        <form @click.prevent="enviar">
+                        <form @submit.prevent="enviar">
                             <div class="field">
                                 <label class="label">Nombre</label>
                                 <div class="control">
-                                    <input class="input" type="email" v-model="form.nombre" required>
+                                    <input class="input" type="text" v-model="form.name" required>
                                 </div>
                             </div>
                             <div class="field">
@@ -22,18 +22,17 @@
                             <div class="field">
                                 <label class="label">Asunto</label>
                                 <div class="control">
-                                    <select class="input" v-model="form.asunto" required>
-                                        <option value="1">Error gramatical en un ejercicio</option>
-                                        <option value="2">Typo en el sitio</option>
-                                        <option value="3">Dudas y/o conflictos</option>
-                                        <option value="4">Sugerencias</option>
+                                    <select class="input" v-model="subject" @change="changeSubject" required>
+                                        <option disabled value="">Selecciona una opción</option>
+                                        <option :value="index" v-for="(subject, index) in subjects">{{subject}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label">Mensaje</label>
                                 <div class="control">
-                                    <textarea class="textarea" rows="3" v-model="form.mensaje" required></textarea>
+                                    <textarea class="textarea" rows="3" v-model="form.message" required></textarea>
                                 </div>
                             </div>
                             <div class="field">
@@ -81,29 +80,62 @@
     }
 </style>
 <script>
-    import Axios from 'axios';
+    import Axios from './../../axios';
+    import swal from 'sweetalert2';
 
     export default{
         data(){
             return {
                 form: {
                     id: null,
-                    nombre: null,
+                    name: null,
                     email: null,
-                    asunto: null,
-                    mensaje: null,
-                }
+                    subject: null,
+                    message: null,
+                },
+                subject: '',
+                subjects: [
+                    'Error gramatical en un ejercicio',
+                    'Typo en el sitio',
+                    'Dudas y/o conflictos',
+                    'Sugerencias',
+                ],
             }
         },
         methods: {
             enviar(){
-                axios.post('/contacto', this.form)
+                swal({
+                    title: 'Enviando...',
+                    onOpen: () => {
+                        swal.showLoading();
+                    },
+                });
+                Axios.post('/contacto', this.form)
                     .then(res => {
-                        console.log(res.data);
+                        if (res.status === 200) {
+                            swal({
+                                title: res.data.message,
+                                type: 'success'
+                            });
+                        }
+                        this.cleanForm();
                     })
                     .catch(error => {
-                        console.log(error.data);
+                        swal({
+                            title: 'Ocurrio un problema',
+                            text: 'Intenta de nuevo más tarde',
+                            type: 'error',
+                        });
+                        this.cleanForm();
                     });
+            },
+            changeSubject(){
+                this.form.subject = this.subjects[this.subject];
+            },
+            cleanForm(){
+                for (let key in this.form) {
+                    this.form[key] = null;
+                }
             },
         }
     }
