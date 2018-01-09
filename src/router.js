@@ -11,6 +11,7 @@ import Personales from './components/pronombres/personales.vue'
 import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
 import Verbos from './components/verbos/verbos.vue'
 import Categoria from './components/verbos/categoria.vue'
+import Contacto from './components/layouts/contacto.vue'
 
 Vue.use(VueRouter);
 
@@ -86,7 +87,11 @@ const routes = [
                 component: Categoria,
             }
         ]
-    }
+    },
+    {
+        path: '/contacto',
+        component: Contacto,
+    },
 ];
 
 export default new VueRouter({mode: 'history', routes});

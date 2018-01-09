@@ -9,7 +9,14 @@
 
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <a href="https://github.com/eichgi" target="_blank" class="link icon"><i class="fa fa-lg fa-github"></i></a>
+                    <router-link to="/contacto" tag="a" class="link icon">
+                        Contacto
+                    </router-link>
+                </div>
+                <div class="navbar-item">
+                    <a href="https://github.com/eichgi" target="_blank" class="link icon">
+                        <i class="fa fa-lg fa-github"></i>
+                    </a>
                 </div>
             </div>
         </div>
