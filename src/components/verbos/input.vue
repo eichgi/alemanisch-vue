@@ -20,26 +20,16 @@
 <script>
     export default{
         props: ['verbo'],
-        mounted(){
-            //console.log(this.verbo);
-        },
         data(){
             return {
                 valid: false,
                 respuesta: '',
             }
         },
-        components: {},
         methods: {
             validarInput(){
                 this.valid = this.respuesta.toLowerCase() === this.verbo.verb.toLowerCase();
                 this.$emit('actualizar', this.verbo.verbo, this.valid);
-                /*if (this.respuesta.toLowerCase() === this.verbo.verb.toLowerCase()) {
-                 this.valid = true;
-                 this.$emit('actualizar', this.verbo.verbo, true);
-                 } else {
-                 this.valid = false;
-                 }*/
             }
         },
     }

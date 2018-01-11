@@ -17,11 +17,11 @@
                             Pronombres <!--<span class="tag is-success">Nuevo</span>-->
                         </router-link>
                         <router-link class="navbar-item" to="/verbos">
-                            Verbos &nbsp;&nbsp;<span class="tag is-success">Nuevo</span>
+                            Verbos &nbsp;&nbsp;<!--<span class="tag is-success">Nuevo</span>-->
                         </router-link>
                         <hr class="navbar-divider">
-                        <router-link class="navbar-item" to="/">
-                            Sustantivos &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                        <router-link class="navbar-item" to="/sustantivos">
+                            Sustantivos &nbsp;&nbsp;<span class="tag is-info">En construcción</span>
                         </router-link>
                         <router-link class="navbar-item" to="/">
                             Conjugador &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
@@ -49,6 +49,11 @@
         </div>
     </nav>
 </template>
+<style scoped>
+    .tabs {
+        margin-bottom: 0 !important;
+    }
+</style>
 <script>
     export default {
         data(){

@@ -10,7 +10,9 @@ import Ejercicios from './components/layouts/ejercicios.vue'
 import Personales from './components/pronombres/personales.vue'
 import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
 import Verbos from './components/verbos/verbos.vue'
-import Categoria from './components/verbos/categoria.vue'
+import CategoriaVerbos from './components/verbos/categoria.vue'
+import Sustantivos from './components/sustantivos/sustantivos.vue'
+import CategoriaSustantivos from './components/sustantivos/categoria.vue'
 import Contacto from './components/layouts/contacto.vue'
 
 Vue.use(VueRouter);
@@ -84,7 +86,17 @@ const routes = [
         children: [
             {
                 path: ':categoria',
-                component: Categoria,
+                component: CategoriaVerbos,
+            }
+        ]
+    },
+    {
+        path: '/sustantivos',
+        component: Sustantivos,
+        children: [
+            {
+                path: ':categoria',
+                component: CategoriaSustantivos,
             }
         ]
     },
