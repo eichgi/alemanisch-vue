@@ -82,10 +82,6 @@
         background: whitesmoke;
     }
 
-    .buttons {
-        margin-top: 1.5em;
-    }
-
     .table {
         box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
     }
@@ -181,7 +177,7 @@
                             if (result.value) {
                                 this.loadNouns();
                             } else if (result.dismiss === 'cancel') {
-                                router.push({path: '/verbos'});
+                                router.push({path: '/sustantivos'});
                             }
                         });
                     } else {

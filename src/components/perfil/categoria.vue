@@ -2,7 +2,7 @@
     <table class="table is-bordered is-striped is-hoverable is-fullwidth">
         <thead>
         <th>Ejercicio</th>
-        <th>Realizado</th>
+        <th>Contador</th>
         </thead>
         <tbody>
             <tr v-for="pronombre in historial">

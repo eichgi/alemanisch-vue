@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="tabs is-centered is-toggle is-fullwidth" v-show="$route.path !== '/verbos'">
+        <div class="tabs is-centered" v-show="$route.path !== '/verbos'">
             <ul>
                 <router-link active-class="is-active" exact tag="li" to="/verbos/regulares">
                     <a><span>Regulares</span></a>
@@ -61,10 +61,11 @@
         margin-top: 1.5em;
     }
 
-    .is-active > a {
+    /*.is-active > a {
         background: #209cee;
         color: snow;
-    }
+    }*/
+
 </style>
 <script>
     export default{

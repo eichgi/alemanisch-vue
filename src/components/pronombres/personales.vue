@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="tabs is-centered is-toggle is-fullwidth">
+        <div class="tabs is-centered ">
             <ul>
                 <router-link active-class="is-active" exact tag="li" to="/pronombres/nominativos">
                     <a>
@@ -22,11 +22,6 @@
                         <span>Posesivos</span>
                     </a>
                 </router-link>
-                <!--<router-link active-class="is-active" tag="li" class="" to="/pronombres/reflexivos">
-                    <a>
-                        <span>Reflexivos</span>
-                    </a>
-                </router-link>-->
             </ul>
         </div>
 
