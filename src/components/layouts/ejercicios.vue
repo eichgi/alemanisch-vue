@@ -23,7 +23,7 @@
                             <p class="title">Sustantivos</p>
                             <i class="fa fa-2x fa-long-arrow-right"></i>
                         </router-link>
-                        <router-link tag="div" to="#" class="tile is-child box disabled">
+                        <router-link tag="div" to="#" class="tile is-child box tile-link">
                             <p class="title">Conjugador</p>
                             <i class="fa fa-2x fa-long-arrow-right"></i>
                         </router-link>

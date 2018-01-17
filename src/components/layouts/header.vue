@@ -14,17 +14,17 @@
                     <router-link class="navbar-link" tag="a" to="/ejercicios">Ejercicios</router-link>
                     <div class="navbar-dropdown">
                         <router-link class="navbar-item" to="/pronombres/nominativos">
-                            Pronombres <!--<span class="tag is-success">Nuevo</span>-->
+                            Pronombres
                         </router-link>
                         <router-link class="navbar-item" to="/verbos">
-                            Verbos &nbsp;&nbsp;<!--<span class="tag is-success">Nuevo</span>-->
+                            Verbos
                         </router-link>
                         <router-link class="navbar-item" to="/sustantivos">
-                            Sustantivos &nbsp;&nbsp;<span class="tag is-success">Nuevo</span>
+                            Sustantivos &nbsp;&nbsp;<!--<span class="tag is-success">Nuevo</span>-->
                         </router-link>
                         <hr class="navbar-divider">
                         <router-link class="navbar-item" to="/">
-                            Conjugador &nbsp;&nbsp;<span class="tag is-warning">Proximamente</span>
+                            Conjugador &nbsp;&nbsp;<span class="tag is-info">En construcción</span>
                         </router-link>
                     </div>
                 </div>
