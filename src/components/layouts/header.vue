@@ -20,10 +20,10 @@
                             Verbos
                         </router-link>
                         <router-link class="navbar-item" to="/sustantivos">
-                            Sustantivos &nbsp;&nbsp;<!--<span class="tag is-success">Nuevo</span>-->
+                            Sustantivos
                         </router-link>
                         <hr class="navbar-divider">
-                        <router-link class="navbar-item" to="/">
+                        <router-link class="navbar-item" to="/conjugador">
                             Conjugador &nbsp;&nbsp;<span class="tag is-info">En construcción</span>
                         </router-link>
                     </div>

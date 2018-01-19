@@ -13,6 +13,8 @@ import Verbos from './components/verbos/verbos.vue'
 import CategoriaVerbos from './components/verbos/categoria.vue'
 import Sustantivos from './components/sustantivos/sustantivos.vue'
 import CategoriaSustantivos from './components/sustantivos/categoria.vue'
+import Conjugador from './components/conjugador/conjugador.vue'
+import CategoriaConjugador from './components/conjugador/categoria.vue'
 import Contacto from './components/layouts/contacto.vue'
 
 Vue.use(VueRouter);
@@ -97,6 +99,16 @@ const routes = [
             {
                 path: ':categoria',
                 component: CategoriaSustantivos,
+            }
+        ]
+    },
+    {
+        path: '/conjugador',
+        component: Conjugador,
+        children: [
+            {
+                path: ':categoria',
+                component: CategoriaConjugador,
             }
         ]
     },

@@ -58,8 +58,7 @@
                         <tbody>
                         <template v-for="sustantivo in nouns">
                             <renglon :sustantivo="sustantivo"
-                                     v-on:updateResponse="updateResponse"
-                            ></renglon>
+                                     v-on:updateResponse="updateResponse"></renglon>
                         </template>
                         </tbody>
                         <tfoot>

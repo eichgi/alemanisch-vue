@@ -41,7 +41,7 @@
                                 <p class="title">Lugares</p>
                                 <i class="fa fa-2x fa-home"></i>
                             </router-link>
-                            <router-link tag="div" to="#" class="tile is-child box disabled">
+                            <router-link tag="div" to="#" class="tile is-child box tile-link">
                                 <p class="title">Transporte</p>
                                 <i class="fa fa-2x fa-ship"></i>
                             </router-link>
