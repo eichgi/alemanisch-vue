@@ -19,7 +19,8 @@
         <router-view></router-view>
         <section class="hero is-fullheight" v-show="$route.path === '/conjugador'">
             <div class="hero-head has-text-centered">
-                <p class="is-size-2-touch is-size-1-desktop" style=" display: inline-block; padding-top: 1.5em; border-bottom: 2px solid #444;">
+                <p class="is-size-2-touch is-size-1-desktop"
+                   style=" display: inline-block; padding-top: 1.5em; border-bottom: 2px solid #444;">
                     Elige una categoria</p>
             </div>
             <div class="hero-body">
@@ -50,32 +51,6 @@
                 </div>
             </div>
         </section>
-        <!--<section class="hero is-fullheight" v-show="$route.path === '/conjugador'">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="tile is-ancestor">
-                        <div class="tile column is-6 is-offset-3 is-vertical is-parent has-text-centered">
-                            <router-link tag="div" to="/conjugador/regulares" class="tile is-child box tile-link">
-                                <p class="title">Verbos Regulares</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                            <router-link tag="div" to="/conjugador/irregulares" class="tile is-child box tile-link">
-                                <p class="title">Verbos Irregulares</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                            <router-link tag="div" to="/conjugador/modales" class="tile is-child box tile-link">
-                                <p class="title">Verbos Modales</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                            <router-link tag="div" to="/conjugador/modales" class="tile is-child box tile-link">
-                                <p class="title">Verbos Auxiliares</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
     </div>
 </template>
 <style scoped>

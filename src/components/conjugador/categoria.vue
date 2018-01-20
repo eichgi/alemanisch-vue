@@ -15,7 +15,7 @@
                                     <li>Elige un nivel</li>
                                     <div class="buttons has-addons is-centered">
                                     <span class="button nivel" @click="changeLevel(index+1, $event)"
-                                          v-for="(nivel, index) in levels" :class="index==0 ? 'is-selected' : ''">{{index+1}}
+                                          v-for="(nivel, index) in levels">{{index+1}}
                                     </span>
                                     </div>
                                     <li>Elige un verbo</li>
@@ -90,13 +90,13 @@
     export default{
         beforeRouteUpdate (to, from, next) {
             this.categoria = to.params.categoria;
+            this.pronouns = this.verbs = [];
+            this.levels = 0;
             this.loadLevels();
-            //this.loadNouns();
             next();
         },
         created(){
             this.loadLevels();
-            //this.loadVerbs();
         },
         data(){
             return {
@@ -133,7 +133,7 @@
                         this.assignResponse();
                     });
                 let elem = event.target;
-                let tds = document.querySelectorAll('td').forEach((elem) => {
+                document.querySelectorAll('td').forEach((elem) => {
                     elem.classList.remove('active');
                 });
                 elem.classList.add('active');
@@ -170,6 +170,22 @@
                 }
             },
             showGuide(){
+                if (!this.verbs.length) {
+                    swal({
+                        text: 'Debes elegir un nivel',
+                        type: 'error',
+                    });
+                    return false;
+                }
+
+                if (!this.pronouns.length) {
+                    swal({
+                        text: 'Debes elegir un verbo',
+                        type: 'error',
+                    });
+                    return false;
+                }
+
                 let html = `<h5><i>Conjugador de verbos ${this.categoria}</i></h5>
                  <table class="table is-striped is-fullwidth">
                  <thead>

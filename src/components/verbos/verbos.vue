@@ -11,10 +11,13 @@
                 <router-link active-class="is-active" tag="li" class="" to="/verbos/modales">
                     <a><span>Modales</span></a>
                 </router-link>
+                <router-link active-class="is-active" tag="li" class="" to="/verbos/auxiliares">
+                    <a><span>Auxiliares</span></a>
+                </router-link>
             </ul>
         </div>
         <router-view></router-view>
-        <section class="hero is-fullheight" v-show="$route.path === '/verbos'">
+        <!--<section class="hero is-fullheight" v-show="$route.path === '/verbos'">
             <div class="hero-body">
                 <div class="container">
                     <div class="tile is-ancestor">
@@ -29,6 +32,40 @@
                             </router-link>
                             <router-link tag="div" to="/verbos/modales" class="tile is-child box tile-link">
                                 <p class="title">Verbos Modales</p>
+                                <i class="fa fa-2x fa-long-arrow-right"></i>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <section class="hero is-fullheight" v-show="$route.path === '/verbos'">
+            <div class="hero-head has-text-centered">
+                <p class="is-size-2-touch is-size-1-desktop"
+                   style=" display: inline-block; padding-top: 1.5em; border-bottom: 2px solid #444;">
+                    Elige una categoria</p>
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-vertical is-6 has-text-centered">
+                            <router-link tag="div" to="/verbos/regulares" class="tile is-child box tile-link">
+                                <p class="title">Regulares</p>
+                                <i class="fa fa-2x fa-long-arrow-right"></i>
+                            </router-link>
+                            <router-link tag="div" to="/verbos/irregulares" class="tile is-child box tile-link">
+                                <p class="title">Irregulares</p>
+                                <i class="fa fa-2x fa-long-arrow-right"></i>
+                            </router-link>
+                        </div>
+
+                        <div class="tile is-parent is-vertical is-6 has-text-centered">
+                            <router-link tag="div" to="/verbos/modales" class="tile is-child box tile-link">
+                                <p class="title">Modales</p>
+                                <i class="fa fa-2x fa-long-arrow-right"></i>
+                            </router-link>
+                            <router-link tag="div" to="/verbos/auxiliares" class="tile is-child box tile-link">
+                                <p class="title">Auxiliares</p>
                                 <i class="fa fa-2x fa-long-arrow-right"></i>
                             </router-link>
                         </div>

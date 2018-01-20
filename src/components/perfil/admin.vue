@@ -12,8 +12,8 @@
                         <ul class="menu-list">
                             <li><a href="#pronombres">Pronombres</a></li>
                             <li><a href="#verbos">Verbos</a></li>
-                            <li><a>Artículos</a></li>
-                            <li><a>Sustantivos</a></li>
+                            <li><a href="#sustantivos">Sustantivos</a></li>
+                            <li><a href="#conjugador">Conjugador</a></li>
                         </ul>
                     </aside>
                 </div>
