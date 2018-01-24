@@ -23,9 +23,6 @@
                                         <tr v-for="verb in verbs">
                                             <td @click="loadPronouns(verb.id, $event)">
                                                 {{verb.verbo}} - {{verb.verb}}
-                                                <span class="is-pulled-right">
-                                                    <i class="fa fa-circle-thin"></i>
-                                                </span>
                                             </td>
                                         </tr>
                                     </table>
@@ -71,14 +68,9 @@
         </div>
     </div>
 </template>
-<style>
-    .active {
-        background: #209cee;
-        color: #FFF;
-    }
-
+<style scoped>
     .is-selected {
-        background: #209cee;
+        background: #209cee !important;
         color: snow;
     }
 </style>
@@ -126,17 +118,20 @@
                     });
             },
             loadPronouns(id, event){
+                this.pronouns = [];
+                swal.showLoading();
                 Axios.get('/conjugador/' + id)
                     .then(res => {
                         console.log(res);
                         this.pronouns = res.data.verbos;
                         this.assignResponse();
+                        swal.close();
                     });
                 let elem = event.target;
                 document.querySelectorAll('td').forEach((elem) => {
-                    elem.classList.remove('active');
+                    elem.classList.remove('is-selected');
                 });
-                elem.classList.add('active');
+                elem.classList.add('is-selected');
             },
             assignResponse(){
                 this.pronounsResponse = {};

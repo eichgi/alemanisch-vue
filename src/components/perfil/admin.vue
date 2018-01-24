@@ -36,7 +36,7 @@
                             <div class="tile is-12 is-vertical is-parent">
                                 <div class="tile is-child notification is-danger" v-if="historial.length == 0">
                                     <p class="title">No has realizado ningún ejercicio</p>
-                                    <p class="subtitle">Ve al menú Ejercicios y elige uno para empezar!</p>
+                                    <p class="subtitle"><router-link to="/ejercicios">Ve al menú Ejercicios y elige uno para empezar!</router-link></p>
                                 </div>
                                 <div :id="index" class="tile is-child box" v-for="(record, index) in historial">
                                     <p class="title">{{index.capitalize()}}</p>
@@ -52,10 +52,6 @@
     </div>
 </template>
 <style scoped>
-    .notification {
-        display: none;
-    }
-
     .section {
         background: whitesmoke;
     }

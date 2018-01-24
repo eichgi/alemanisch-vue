@@ -17,28 +17,6 @@
             </ul>
         </div>
         <router-view></router-view>
-        <!--<section class="hero is-fullheight" v-show="$route.path === '/verbos'">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="tile is-ancestor">
-                        <div class="tile column is-6 is-offset-3 is-vertical is-parent has-text-centered">
-                            <router-link tag="div" to="/verbos/regulares" class="tile is-child box tile-link">
-                                <p class="title">Verbos Regulares</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                            <router-link tag="div" to="/verbos/irregulares" class="tile is-child box tile-link">
-                                <p class="title">Verbos Irregulares</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                            <router-link tag="div" to="/verbos/modales" class="tile is-child box tile-link">
-                                <p class="title">Verbos Modales</p>
-                                <i class="fa fa-2x fa-long-arrow-right"></i>
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
         <section class="hero is-fullheight" v-show="$route.path === '/verbos'">
             <div class="hero-head has-text-centered">
                 <p class="is-size-2-touch is-size-1-desktop"

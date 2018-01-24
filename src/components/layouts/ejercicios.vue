@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical is-6 has-text-centered">
-                        <router-link tag="div" to="/pronombres/nominativos" class="tile is-child box tile-link">
+                        <router-link tag="div" to="/pronombres" class="tile is-child box tile-link">
                             <p class="title">Pronombres</p>
                             <i class="fa fa-2x fa-long-arrow-right"></i>
                         </router-link>
