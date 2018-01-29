@@ -13,7 +13,7 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <router-link class="navbar-link" tag="a" to="/ejercicios">Ejercicios</router-link>
                     <div class="navbar-dropdown">
-                        <router-link class="navbar-item" to="/pronombres/nominativos">
+                        <router-link class="navbar-item" to="/pronombres">
                             Pronombres
                         </router-link>
                         <router-link class="navbar-item" to="/verbos">

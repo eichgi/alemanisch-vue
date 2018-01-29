@@ -169,12 +169,6 @@
                     }
                 }
                 if (isValid) {
-                    /**
-                     * 1.- Si el usuario esta autenticado, guardar ejercicio
-                     * 2.- Sino, preguntar si quiere acceder
-                     * 2.1- Si accede guardar ejercicio
-                     * 2.2 Si declina redirigir a Inicio
-                     * */
 
                     if (this.$store.getters.estaAutenticado) {
                         this.$store.dispatch('saveExerciseToRecord');
@@ -215,26 +209,6 @@
                             }
                         });
                     }
-
-                    /*swal({
-                     title: 'Ejercicio terminado',
-                     type: 'success',
-                     showCancelButton: true,
-                     confirmButtonText: 'Repetir ejercicio',
-                     cancelButtonText: 'Regresar al menú',
-                     confirmButtonClass: 'button is-primary',
-                     cancelButtonClass: 'button is-danger',
-                     buttonsStyling: false,
-                     reverseButtons: false,
-                     }).then((result) => {
-                     if (result.value) {
-                     this.cargarVerbos();
-                     // result.dismiss can be 'cancel', 'overlay',
-                     // 'close', and 'timer'
-                     } else if (result.dismiss === 'cancel') {
-                     router.push({path: '/verbos'});
-                     }
-                     });*/
                 } else {
                     swal(
                         '',

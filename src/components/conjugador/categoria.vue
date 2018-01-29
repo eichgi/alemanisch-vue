@@ -120,12 +120,13 @@
             loadPronouns(id, event){
                 this.pronouns = [];
                 swal.showLoading();
-                Axios.get('/conjugador/' + id)
+                Axios.get(`/conjugador/${this.categoria}/${this.level}/${id}`)
                     .then(res => {
                         console.log(res);
-                        this.pronouns = res.data.verbos;
-                        this.assignResponse();
                         swal.close();
+                        this.pronouns = res.data.verbos;
+                        this.$store.dispatch('setEjercicioId', res.data.ejercicio_id);
+                        this.assignResponse();
                     });
                 let elem = event.target;
                 document.querySelectorAll('td').forEach((elem) => {
@@ -151,11 +152,45 @@
                 }
 
                 if (isValid) {
-                    swal(
-                        '',
-                        'Bien hexo',
-                        'success'
-                    );
+                    if (this.$store.getters.estaAutenticado) {
+                        this.$store.dispatch('saveExerciseToRecord');
+                        swal({
+                            title: 'Ejercicio terminado',
+                            type: 'success',
+                            showCancelButton: true,
+                            confirmButtonText: 'Repetir ejercicio',
+                            cancelButtonText: 'Regresar al menú',
+                            confirmButtonClass: 'button is-primary',
+                            cancelButtonClass: 'button is-danger',
+                            buttonsStyling: false,
+                            reverseButtons: false,
+                        }).then((result) => {
+                            if (result.value) {
+                                this.loadVerbs();
+                            } else if (result.dismiss === 'cancel') {
+                                router.push({path: '/conjugador'});
+                            }
+                        });
+                    } else {
+                        swal({
+                            text: "¿Deseas acceder para registrar el ejercicio?",
+                            type: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Acceder',
+                            cancelButtonText: 'Después',
+                            confirmButtonClass: 'button is-success',
+                            cancelButtonClass: 'button is-danger',
+                            buttonsStyling: false,
+                            reverseButtons: true
+                        }).then((result) => {
+                            if (result.value) {
+                                this.$store.dispatch('saveGuestsExercises');
+                                router.push({path: '/login'});
+                            } else if (result.dismiss === 'cancel') {
+                                router.push({path: '/verbos'});
+                            }
+                        });
+                    }
                 } else {
                     swal(
                         '',
