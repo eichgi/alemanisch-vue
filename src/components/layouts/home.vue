@@ -18,7 +18,7 @@
             <div class="container has-text-centered">
                 <div class="column is-6 is-offset-3">
                     <h1 class="title">
-                        Bienvenido a Alemannisch
+                        Bienvenido a Alemanisch
                     </h1>
                     <h2 class="subtitle">
                         Aprende alemán practicando!

@@ -18,6 +18,15 @@
                                           v-for="(nivel, index) in levels">{{index+1}}
                                     </span>
                                     </div>
+                                    <li>Elige un tiempo verbal</li>
+                                    <div class="buttons has-addons is-centered">
+                                        <span :class="[time.id == 4 ? 'time-selected' : '', 'button', 'button-time']"
+                                              v-for="time in times"
+                                              @click="(time.id != 3) ? changeTime(time.id, $event) : null"
+                                              :disabled="(time.id == 3)">
+                                            {{time.nombre}}
+                                        </span>
+                                    </div>
                                     <li>Elige un verbo</li>
                                     <table class="table is-striped">
                                         <tr v-for="verb in verbs">
@@ -73,6 +82,19 @@
         background: #209cee !important;
         color: snow;
     }
+
+    .times-selector {
+        margin: 1em 3.5em 0;
+    }
+
+    .time-selected {
+        background: #209cee !important;
+        color: snow;
+    }
+
+    .buttons {
+        margin-top: 1em;
+    }
 </style>
 <script>
     import Axios from './../../axios';
@@ -89,6 +111,7 @@
         },
         created(){
             this.loadLevels();
+            this.loadTenses();
         },
         data(){
             return {
@@ -98,6 +121,8 @@
                 verbs: [],
                 pronouns: [],
                 pronounsResponse: {},
+                time: 2,
+                times: [],
             }
         },
         components: {
@@ -110,6 +135,13 @@
                         this.levels = res.data.niveles;
                     });
             },
+            loadTenses(){
+                Axios.get(`/tenses`)
+                    .then(res => {
+                        console.log(res);
+                        this.times = res.data.tiempos;
+                    });
+            },
             loadVerbs(){
                 Axios.get(`/verbos/${this.categoria}/${this.level}`)
                     .then(res => {
@@ -120,18 +152,19 @@
             loadPronouns(id, event){
                 this.pronouns = [];
                 swal.showLoading();
-                Axios.get(`/conjugador/${this.categoria}/${this.level}/${id}`)
+                Axios
+                    .post(`/conjugador/${this.categoria}/${this.level}/${id}`, {
+                        time: this.time,
+                    })
                     .then(res => {
-                        console.log(res);
+                        //console.log(res);
                         swal.close();
                         this.pronouns = res.data.verbos;
                         this.$store.dispatch('setEjercicioId', res.data.ejercicio_id);
                         this.assignResponse();
                     });
                 let elem = event.target;
-                document.querySelectorAll('td').forEach((elem) => {
-                    elem.classList.remove('is-selected');
-                });
+                this.clearClass('td', 'is-selected');
                 elem.classList.add('is-selected');
             },
             assignResponse(){
@@ -240,10 +273,25 @@
             changeLevel(level, event){
                 this.level = level;
                 this.loadVerbs();
-                document.querySelectorAll('.nivel').forEach((elem) => {
-                    elem.classList.remove('is-selected');
-                });
+                this.clearClass('.nivel', 'is-selected');
                 event.target.classList.add('is-selected');
+                this.clearClass('td', 'is-selected');
+            },
+            changeTime(time_id, event){
+                this.time = time_id;
+                this.loadVerbs();
+                this.clearClass('.button-time', 'time-selected');
+                event.target.classList.add('time-selected');
+                this.clearClass('td', 'is-selected');
+                this.clearPronouns();
+            },
+            clearClass(elem, clase){
+                document.querySelectorAll(elem).forEach((elem) => {
+                    elem.classList.remove(clase);
+                });
+            },
+            clearPronouns(){
+                this.pronouns = [];
             },
         }
     }
