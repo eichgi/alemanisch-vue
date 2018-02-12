@@ -12,12 +12,6 @@
                         <div class="card-content">
                             <div class="content">
                                 <ol>
-                                    <li>Elige un nivel</li>
-                                    <div class="buttons has-addons is-centered">
-                                    <span class="button nivel" @click="changeLevel(index+1, $event)"
-                                          v-for="(nivel, index) in levels">{{index+1}}
-                                    </span>
-                                    </div>
                                     <li>Elige un tiempo verbal</li>
                                     <div class="buttons has-addons is-centered">
                                         <span :class="[time.id == 4 ? 'time-selected' : '', 'button', 'button-time']"
@@ -26,6 +20,12 @@
                                               :disabled="(time.id == 3)">
                                             {{time.nombre}}
                                         </span>
+                                    </div>
+                                    <li>Elige un nivel</li>
+                                    <div class="buttons has-addons is-centered">
+                                        <span class="button nivel" @click="changeLevel(index+1, $event)"
+                                        v-for="(nivel, index) in levels">{{index+1}}
+                                    </span>
                                     </div>
                                     <li>Elige un verbo</li>
                                     <table class="table is-striped">
@@ -116,12 +116,14 @@
         data(){
             return {
                 categoria: this.$route.params.categoria,
-                level: 1,
+                //level: 1,
+                level: null,
                 levels: 0,
                 verbs: [],
                 pronouns: [],
                 pronounsResponse: {},
-                time: 2,
+                //time: 2,
+                time: null,
                 times: [],
             }
         },
@@ -157,7 +159,7 @@
                         time: this.time,
                     })
                     .then(res => {
-                        //console.log(res);
+                        console.log(res);
                         swal.close();
                         this.pronouns = res.data.verbos;
                         this.$store.dispatch('setEjercicioId', res.data.ejercicio_id);
