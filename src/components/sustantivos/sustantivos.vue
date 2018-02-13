@@ -14,6 +14,9 @@
                 <router-link active-class="is-active" exact tag="li" to="/sustantivos/transporte">
                     <a>Transporte</a>
                 </router-link>
+                <router-link active-class="is-active" exact tag="li" to="/sustantivos/tiempo">
+                    <a>Tiempo</a>
+                </router-link>
             </ul>
         </div>
         <router-view></router-view>
@@ -33,6 +36,10 @@
                             <router-link tag="div" to="/sustantivos/animales" class="tile is-child box tile-link">
                                 <p class="title">Animales</p>
                                 <i class="fa fa-2x fa-pied-piper-alt"></i>
+                            </router-link>
+                            <router-link tag="div" to="/sustantivos/tiempo" class="tile is-child box tile-link">
+                                <p class="title">Tiempo</p>
+                                <i class="fa fa-2x fa-clock-o"></i>
                             </router-link>
                         </div>
 

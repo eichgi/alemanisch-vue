@@ -1,7 +1,7 @@
 <template>
     <section class="hero is-fullheight">
         <div class="hero-head has-text-centered">
-            <p class="is-size-2-touch is-size-1-desktop" style="padding-top: 1.5em;">Nuestros ejercicios</p>
+            <p class="is-size-2-touch is-size-1-desktop" style="padding-top: 1.5em;">Ejercicios</p>
             <p class="subtitle">Porque aprender gramatica es muy importante</p>
         </div>
         <div class="hero-body">

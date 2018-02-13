@@ -23,7 +23,7 @@
                             Sustantivos
                         </router-link>
                         <router-link class="navbar-item" to="/conjugador">
-                            Conjugador &nbsp;&nbsp;<span class="tag is-success">Nuevo</span>
+                            Conjugador &nbsp;&nbsp;
                         </router-link>
                         <!--<hr class="navbar-divider">-->
                     </div>
