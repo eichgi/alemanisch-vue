@@ -5,6 +5,7 @@
                 <div class="container">
                     <div class="navbar-start">
                         <router-link class="navbar-item" to="/ejercicios" tag="a">Ejercicios</router-link>
+                        <router-link class="navbar-item" to="/biblioteca" tag="a">Biblioteca</router-link>
                     </div>
                     <div class="navbar-end">
                         <router-link class="navbar-item" to="/login" tag="a" v-if="!auth">Acceder</router-link>

@@ -25,9 +25,9 @@
                         <router-link class="navbar-item" to="/conjugador">
                             Conjugador &nbsp;&nbsp;
                         </router-link>
-                        <!--<hr class="navbar-divider">-->
                     </div>
                 </div>
+                <router-link class="navbar-item" to="/biblioteca" tag="a">Biblioteca</router-link>
             </div>
 
             <div class="navbar-end">
@@ -56,18 +56,18 @@
 </style>
 <script>
     export default {
-        data(){
+        data() {
             return {
                 showNav: false,
             }
         },
         computed: {
-            auth(){
+            auth() {
                 return this.$store.getters.estaAutenticado;
             }
         },
         watch: {
-            '$route'(to, from){
+            '$route'(to, from) {
 
             }
         }

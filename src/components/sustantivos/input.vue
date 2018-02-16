@@ -25,9 +25,9 @@
     }
 </style>
 <script>
-    export default{
+    export default {
         props: ['sustantivo'],
-        data(){
+        data() {
             return {
                 valid: false,
                 validArticle: false,
@@ -37,7 +37,7 @@
             }
         },
         methods: {
-            validateResponse(){
+            validateResponse() {
                 this.validArticle = this.article.toLowerCase() === this.sustantivo.artikel.toLowerCase();
                 this.validNoun = this.noun.toLowerCase() === this.sustantivo.substantiv.toLowerCase();
                 this.valid = this.validArticle && this.validNoun;

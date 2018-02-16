@@ -16,6 +16,7 @@ import CategoriaSustantivos from './components/sustantivos/categoria.vue'
 import Conjugador from './components/conjugador/conjugador.vue'
 import CategoriaConjugador from './components/conjugador/categoria.vue'
 import Contacto from './components/layouts/contacto.vue'
+import Biblioteca from './components/biblioteca/biblioteca.vue'
 
 Vue.use(VueRouter);
 
@@ -27,7 +28,7 @@ const routes = [
     {
         path: '/login',
         component: Login,
-        beforeEnter(to, from, next){
+        beforeEnter(to, from, next) {
             if (store.getters.estaAutenticado) {
                 next('/');
             } else {
@@ -38,7 +39,7 @@ const routes = [
     {
         path: '/registro',
         component: Signup,
-        beforeEnter(to, from, next){
+        beforeEnter(to, from, next) {
             if (store.getters.estaAutenticado) {
                 next('/');
             } else {
@@ -49,7 +50,7 @@ const routes = [
     {
         path: '/logout',
         component: Logout,
-        beforeEnter(to, from, next){
+        beforeEnter(to, from, next) {
             if (store.getters.estaAutenticado) {
                 next();
             } else {
@@ -64,7 +65,7 @@ const routes = [
     {
         path: '/perfil',
         component: Admin,
-        beforeEnter(to, from, next){
+        beforeEnter(to, from, next) {
             if (store.getters.estaAutenticado) {
                 next();
             } else {
@@ -115,6 +116,10 @@ const routes = [
     {
         path: '/contacto',
         component: Contacto,
+    },
+    {
+        path: '/biblioteca',
+        component: Biblioteca,
     },
 ];
 
