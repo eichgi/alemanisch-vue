@@ -5,7 +5,7 @@ import Home from './components/layouts/home.vue'
 import Login from './components/auth/login.vue'
 import Signup from './components/auth/signup.vue'
 import Logout from './components/auth/logout.vue'
-import Admin from './components/perfil/admin.vue'
+import Perfil from './components/perfil/admin.vue'
 import Ejercicios from './components/layouts/ejercicios.vue'
 import Personales from './components/pronombres/personales.vue'
 import PronombreTipo from './components/pronombres/pronombres-tipo.vue'
@@ -17,6 +17,7 @@ import Conjugador from './components/conjugador/conjugador.vue'
 import CategoriaConjugador from './components/conjugador/categoria.vue'
 import Contacto from './components/layouts/contacto.vue'
 import Biblioteca from './components/biblioteca/biblioteca.vue'
+import Admin from './components/admin/index.vue'
 
 Vue.use(VueRouter);
 
@@ -64,7 +65,7 @@ const routes = [
     },
     {
         path: '/perfil',
-        component: Admin,
+        component: Perfil,
         beforeEnter(to, from, next) {
             if (store.getters.estaAutenticado) {
                 next();
@@ -120,6 +121,10 @@ const routes = [
     {
         path: '/biblioteca',
         component: Biblioteca,
+    },
+    {
+        path: '/admin',
+        component: Admin,
     },
 ];
 

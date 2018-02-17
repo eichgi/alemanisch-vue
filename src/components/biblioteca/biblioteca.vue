@@ -22,14 +22,6 @@
             <div class="column is-9" style="margin-bottom: 2em">
                 <div class="tile is-ancestor">
                     <div class="tile is-vertical is-12">
-                        <div class="tile">
-                            <div class="tile is-parent">
-                                <article class="tile is-child notification is-info">
-                                    Bienvenido a la Biblioteca, aquí podrás encontrar material de apoya para realizar y
-                                    entender de mejor forma los ejercicios disponibles en esta tu plataforma!
-                                </article>
-                            </div>
-                        </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 <p class="title">¿Qué puedo encontrar aquí?</p>
@@ -37,7 +29,7 @@
                                     <p>Como te habrás dado cuenta, al momento de realizar un ejercicio hay un pequeño
                                         bloque de información que corresponde a la actividad por realizar. En esta
                                         sección podrás encontrar más información sobre el idioma, de manera que te pueda
-                                        ayudar a entender mejor las reglas del alemán.</p>
+                                        ayudar a entender mejor el alemán y sus reglas.</p>
                                 </div>
                             </article>
                         </div>
