@@ -14,47 +14,47 @@ export default new Vuex.Store({
         guestsExercises: [],
     },
     mutations: {
-        storeUser(state, usuario){
+        storeUser(state, usuario) {
             state.usuario = usuario;
             localStorage.setItem('usuario', JSON.stringify(usuario));
         },
-        storeRespuesta(state, respuesta){
+        storeRespuesta(state, respuesta) {
             state.respuesta = respuesta;
         },
-        logout(state){
+        logout(state) {
             state.usuario = null;
             state.respuesta = null;
             localStorage.removeItem('usuario');
         },
-        storeEjercicioId(state, id){
+        storeEjercicioId(state, id) {
             state.ejercicio_id = id;
         },
-        storeGuestsExercise(state, exercise){
+        storeGuestsExercise(state, exercise) {
             state.guestsExercises.push(exercise);
         },
-        clearGuestsExercises(state){
+        clearGuestsExercises(state) {
             state.guestsExercises = [];
         },
     },
     getters: {
-        estaAutenticado(state){
+        estaAutenticado(state) {
             return state.usuario !== null;
         },
-        usuario(state){
+        usuario(state) {
             return state.usuario;
         },
-        respuesta(state){
+        respuesta(state) {
             return state.respuesta;
         },
-        ejercicio_id(state){
+        ejercicio_id(state) {
             return state.ejercicio_id;
         },
-        guestsExercises(state){
+        guestsExercises(state) {
             return state.guestsExercises;
         }
     },
     actions: {
-        login({commit, dispatch}, authData){
+        login({commit, dispatch}, authData) {
             Axios.post('/login', authData)
                 .then(res => {
                     let respuesta = {
@@ -72,7 +72,7 @@ export default new Vuex.Store({
                 commit('storeRespuesta', respuesta);
             });
         },
-        signUp({commit}, authData){
+        signUp({commit}, authData) {
             Axios.post('/registro', authData)
                 .then(res => {
                     let respuesta = {
@@ -82,21 +82,21 @@ export default new Vuex.Store({
                     commit('storeRespuesta', respuesta);
                 });
         },
-        logout({commit, dispatch}){
+        logout({commit, dispatch}) {
             commit('logout');
             dispatch('redirectToHome');
         },
-        redirectToHome(){
+        redirectToHome() {
             router.push({path: '/'});
         },
-        checkIfLogin({commit}){
+        checkIfLogin({commit}) {
             let usuario = localStorage.getItem('usuario');
             if (usuario) {
                 usuario = JSON.parse(usuario);
                 commit('storeUser', usuario);
             }
         },
-        saveExerciseToRecord({}, exercise = null){
+        saveExerciseToRecord({}, exercise = null) {
             console.log(exercise);
             let usuario = this.getters.usuario;
             const data = {
@@ -111,13 +111,13 @@ export default new Vuex.Store({
                     console.log(res);
                 });
         },
-        setEjercicioId({commit}, ejercicio_id){
+        setEjercicioId({commit}, ejercicio_id) {
             commit('storeEjercicioId', ejercicio_id)
         },
-        saveGuestsExercises({commit}){
+        saveGuestsExercises({commit}) {
             commit('storeGuestsExercise', this.getters.ejercicio_id);
         },
-        saveExercisesAfterLogin({commit, dispatch}){
+        saveExercisesAfterLogin({commit, dispatch}) {
             let exercises = this.getters.guestsExercises;
             console.log(exercises);
             for (const exercise of exercises) {
@@ -127,7 +127,7 @@ export default new Vuex.Store({
             //commit('clearGuestsExercises');
             console.log('It\'s supposed I already have done with this...');
         },
-        clearGuestsExercises({commit}){
+        clearGuestsExercises({commit}) {
             commit('clearGuestsExercises');
         },
     }

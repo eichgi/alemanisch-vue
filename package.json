@@ -12,6 +12,7 @@
   "dependencies": {
     "moment": "^2.20.1",
     "vue": "^2.5.11",
+    "vue-ckeditor2": "^1.25.0",
     "vuex": "^3.0.1"
   },
   "browserslist": [

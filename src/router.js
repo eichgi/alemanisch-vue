@@ -18,6 +18,9 @@ import CategoriaConjugador from './components/conjugador/categoria.vue'
 import Contacto from './components/layouts/contacto.vue'
 import Biblioteca from './components/biblioteca/biblioteca.vue'
 import Admin from './components/admin/index.vue'
+import Post from './components/admin/post.vue'
+import PostView from './components/admin/post-view.vue'
+import Editor from './components/admin/editor.vue'
 
 Vue.use(VueRouter);
 
@@ -125,6 +128,22 @@ const routes = [
     {
         path: '/admin',
         component: Admin,
+        children: [
+            {
+                path: 'editor',
+                component: Editor,
+            },
+            {
+                path: 'post',
+                component: Post,
+                children: [
+                    {
+                        path: ':id',
+                        component: PostView,
+                    },
+                ]
+            },
+        ],
     },
 ];
 

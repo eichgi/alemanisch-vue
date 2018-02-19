@@ -37,6 +37,9 @@
                 <a class="navbar-item has-dropdown is-hoverable" v-if="auth">
                     <a class="navbar-link">Opciones</a>
                     <div class="navbar-dropdown">
+                        <router-link class="navbar-item" to="/admin">
+                            Admin
+                        </router-link>
                         <router-link class="navbar-item" to="/perfil">
                             Mi cuenta
                         </router-link>
