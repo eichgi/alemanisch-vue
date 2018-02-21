@@ -32,7 +32,7 @@
 
             <div class="navbar-end">
                 <router-link class="navbar-item" to="/login" v-if="!auth">
-                    Iniciar sesión
+                    Acceder
                 </router-link>
                 <a class="navbar-item has-dropdown is-hoverable" v-if="auth">
                     <a class="navbar-link">Opciones</a>

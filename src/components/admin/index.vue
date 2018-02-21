@@ -3,8 +3,8 @@
         <div class="columns" style="margin: 2em 0">
             <div class="column is-3">
                 <div class="has-text-centered">
-                    <router-link to="/admin/editor" class="button is-link is-fullwidth">
-                        Nueva publicación
+                    <router-link to="/admin" class="button is-primary is-fullwidth">
+                        Administrador
                     </router-link>
                 </div>
                 <aside class="menu" style="margin-top: 1.5em">
@@ -12,7 +12,6 @@
                     <ul class="menu-list">
                         <li v-for="post in posts">
                             <router-link v-bind:to="'/admin/post/'+post.id">{{post.title}}</router-link>
-                            <!--<a :href="'/admin/post/'+post.id">{{post.title}}</a>-->
                         </li>
                         <!--<li><a>Pronombres</a></li>
                         <li><a>Verbos</a></li>

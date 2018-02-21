@@ -1,6 +1,14 @@
 <template>
     <div>
-        <h1 class="title">{{post.title}}</h1>
+        <div>
+            <div class="is-pulled-right">
+                <router-link :to="'/admin/editor/'+post.id" class="button is-danger">
+                    <i class="fa fa-pencil"></i>
+                    Editar
+                </router-link>
+            </div>
+            <h1 class="title">{{post.title}}</h1>
+        </div>
         <div v-html="post.content"></div>
     </div>
 </template>

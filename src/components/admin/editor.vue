@@ -4,13 +4,13 @@
             <div class="field">
                 <div class="control">
                     <label>Titulo:</label>
-                    <input class="input" type="text" v-model="newPost.title">
+                    <input class="input" type="text" v-model="post.title">
                 </div>
             </div>
             <div class="field">
                 <div class="control">
                     <label>Contenido:</label>
-                    <ckeditor v-model="newPost.contenido" :config="config"/>
+                    <ckeditor v-model="post.contenido" :config="config"/>
                 </div>
             </div>
             <div class="has-text-centered" style="margin-top: 1em">
@@ -21,16 +21,39 @@
 </template>
 
 <script>
+    import Axios from './../../axios'
     import Ckeditor from 'vue-ckeditor2'
+    import swal from 'sweetalert2'
 
     export default {
         name: "editor",
+        beforeRouteUpdate(to, from, next) {
+            if (to.params.id) {
+                this.post.id = to.params.id;
+                this.getPost();
+                this.post._method = 'PUT';
+                this.route = '/posts/' + this.post.id;
+            } else
+                this.clearPost();
+            next();
+        },
+        created() {
+            if (this.$route.params.id) {
+                this.post.id = this.$route.params.id;
+                this.getPost();
+                this.post._method = 'PUT';
+                this.route = '/posts/' + this.post.id;
+            }
+        },
         data: () => {
             return {
-                newPost: {
+                post: {
+                    id: null,
                     title: '',
                     contenido: '',
+                    _method: 'POST',
                 },
+                route: '/posts',
                 config: {
                     toolbar: [
                         {
@@ -75,14 +98,44 @@
         },
         methods: {
             publish() {
-                Axios
-                    .post('/posts', this.newPost)
+                if (this.validatePost())
+                    Axios
+                    //.post('/posts', this.post)
+                        .post(this.route, this.post)
+                        .then((res) => {
+                            console.log(res);
+                            if (res.data.status) {
+                                swal({
+                                    title: res.data.message,
+                                    type: 'success',
+                                });
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                else
+                    swal({
+                        title: 'Datos incorrectos',
+                        text: 'Debes llenar todos los campos',
+                        type: 'error',
+                    });
+            },
+            getPost() {
+                Axios.get('/posts/' + this.post.id)
                     .then((res) => {
                         console.log(res);
-                    })
-                    .catch((error) => {
-                        console.log(error);
+                        this.post.title = res.data.post.title;
+                        this.post.contenido = res.data.post.content;
                     });
+            },
+            clearPost() {
+                for (let value in this.post) {
+                    this.post[value] = '';
+                }
+            },
+            validatePost() {
+                return (this.post.title !== null && this.post.contenido !== null);
             },
         }
     }

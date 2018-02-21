@@ -21,6 +21,7 @@ import Admin from './components/admin/index.vue'
 import Post from './components/admin/post.vue'
 import PostView from './components/admin/post-view.vue'
 import Editor from './components/admin/editor.vue'
+import Placeholder from './components/admin/placeholder.vue'
 
 Vue.use(VueRouter);
 
@@ -130,8 +131,18 @@ const routes = [
         component: Admin,
         children: [
             {
+                path: '',
+                component: Placeholder,
+            },
+            {
                 path: 'editor',
                 component: Editor,
+                children: [
+                    {
+                        path: ':id',
+                        component: Editor
+                    }
+                ],
             },
             {
                 path: 'post',
@@ -141,7 +152,7 @@ const routes = [
                         path: ':id',
                         component: PostView,
                     },
-                ]
+                ],
             },
         ],
     },
