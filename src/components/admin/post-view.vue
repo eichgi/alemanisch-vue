@@ -2,8 +2,8 @@
     <div>
         <div>
             <div class="is-pulled-right">
-                <router-link :to="'/admin/editor/'+post.id" class="button is-danger">
-                    <i class="fa fa-pencil"></i>
+                <router-link :to="'/admin/editor/'+post.id" class="button is-danger" v-show="">
+                    <i class="fa fa-pencil"></i> &nbsp;
                     Editar
                 </router-link>
             </div>

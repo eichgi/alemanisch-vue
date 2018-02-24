@@ -8,22 +8,15 @@
                     </router-link>
                 </div>
                 <aside class="menu" style="margin-top: 1.5em">
-                    <p class="menu-label">Listado de publicaciones</p>
-                    <ul class="menu-list">
+                    <p class="menu-label" @click="toggleList">
+                        Listado de publicaciones
+                        <i class="fa fa-caret-down" v-if="toggle"></i>
+                        <i class="fa fa-caret-right" v-else></i>
+                    </p>
+                    <ul class="menu-list" v-show="toggle">
                         <li v-for="post in posts">
                             <router-link v-bind:to="'/admin/post/'+post.id">{{post.title}}</router-link>
                         </li>
-                        <!--<li><a>Pronombres</a></li>
-                        <li><a>Verbos</a></li>
-                        <li><a>Sustantivos</a></li>
-                        <li>
-                            <a>Conjugador</a>
-                            <ul>
-                                <li><a>Presente</a></li>
-                                <li><a>Pasado</a></li>
-                                <li><a>Futuro</a></li>
-                            </ul>
-                        </li>-->
                     </ul>
                 </aside>
             </div>
@@ -45,6 +38,7 @@
         data: () => {
             return {
                 posts: null,
+                toggle: true,
             }
         },
         methods: {
@@ -55,12 +49,20 @@
                         console.log(res);
                         this.posts = res.data.posts;
                     });
+            },
+            toggleList() {
+
+                this.toggle = !this.toggle;
             }
         },
     }
 </script>
 
 <style scoped>
+    section {
+        min-height: 80vh;
+    }
+
     .menu-list > li > a:hover {
         background: #3273dc;
         color: white;

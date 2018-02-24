@@ -1,26 +1,20 @@
 <template>
-    <div class="container">
+    <section class="container">
         <div class="columns" style="margin-top: 1em">
             <div class="column is-3">
-                <aside class="menu">
-                    <p class="menu-label">Categorias</p>
+                <aside class="menu" style="margin-top: 1.5em">
+                    <p class="menu-label">
+                        Listado de publicaciones
+                    </p>
                     <ul class="menu-list">
-                        <li><a class="is-active">Pronombres</a></li>
-                        <li><a>Verbos</a></li>
-                        <li><a>Sustantivos</a></li>
-                        <li>
-                            <a>Conjugador</a>
-                            <ul>
-                                <li><a>Presente</a></li>
-                                <li><a>Pasado</a></li>
-                                <li><a>Futuro</a></li>
-                            </ul>
+                        <li v-for="post in posts">
+                            <router-link v-bind:to="'/biblioteca/post/'+post.id">{{post.title}}</router-link>
                         </li>
                     </ul>
                 </aside>
             </div>
-            <div class="column is-9" style="margin-bottom: 2em">
-                <div class="tile is-ancestor">
+            <div class="column is-9 box" style="margin-bottom: 2em">
+                <!--<div class="tile is-ancestor">
                     <div class="tile is-vertical is-12">
                         <div class="tile is-parent">
                             <article class="tile is-child box">
@@ -34,45 +28,51 @@
                             </article>
                         </div>
                     </div>
-                </div>
+                </div>-->
+                <router-view></router-view>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
+    import Axios from './../../axios'
+
     export default {
-        name: "biblioteca"
+        created() {
+            this.getPosts();
+        },
+        name: "biblioteca",
+        data() {
+            return {
+                posts: null,
+            }
+        },
+        methods: {
+            getPosts() {
+                Axios
+                    .get('/posts')
+                    .then((res) => {
+                        console.log(res);
+                        this.posts = res.data.posts;
+                    });
+            },
+        },
     }
 </script>
 
 <style scoped>
+    section {
+        min-height: 80vh;
+    }
+
+    .menu-list > li > a:hover {
+        background: #3273dc;
+        color: white;
+    }
 
     .columns {
         width: 100%;
-    }
-
-    .menu-label {
-        color: #8F99A3;
-        letter-spacing: 1.3;
-        font-weight: 700;
-    }
-
-    .menu-list a {
-        color: #0F1D38;
-        font-size: 14px;
-        font-weight: 700;
-    }
-
-    .menu-list a:hover {
-        background-color: transparent;
-        color: #276cda;
-    }
-
-    .menu-list a.is-active {
-        background-color: transparent;
-        color: #276cda;
-        font-weight: 700;
     }
 
     .card {

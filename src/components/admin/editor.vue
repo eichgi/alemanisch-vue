@@ -76,12 +76,12 @@
                         },
                         {
                             name: 'paragraph',
-                            items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language']
+                            items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
                         },
                         {name: 'links', items: ['Link', 'Unlink', 'Anchor']},
                         {
                             name: 'insert',
-                            items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
+                            items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
                         },
                         '/',
                         {name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize']},
@@ -98,9 +98,8 @@
         },
         methods: {
             publish() {
-                if (this.validatePost())
+                if (this.validatePost()) {
                     Axios
-                    //.post('/posts', this.post)
                         .post(this.route, this.post)
                         .then((res) => {
                             console.log(res);
@@ -114,12 +113,13 @@
                         .catch((error) => {
                             console.log(error);
                         });
-                else
+                } else {
                     swal({
                         title: 'Datos incorrectos',
                         text: 'Debes llenar todos los campos',
                         type: 'error',
                     });
+                }
             },
             getPost() {
                 Axios.get('/posts/' + this.post.id)

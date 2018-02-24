@@ -125,6 +125,18 @@ const routes = [
     {
         path: '/biblioteca',
         component: Biblioteca,
+        children: [
+            {
+                path: 'post',
+                component: Post,
+                children: [
+                    {
+                        path: ':id',
+                        component: PostView,
+                    },
+                ],
+            },
+        ],
     },
     {
         path: '/admin',
