@@ -13,18 +13,18 @@
     import swal from 'sweetalert2';
     import router from './../../router';
 
-    export default{
-        created(){
+    export default {
+        created() {
             swal({
                 title: '¡Auf Wiedersehen!',
                 timer: 1200,
                 onOpen: () => {
-                    swal.showLoading()
+                    swal.showLoading();
                 }
             }).then((result) => {
                 if (result.dismiss === 'timer') {
                     this.$store.dispatch('logout');
-                    outer.push({path: '/'});
+                    router.push({path: '/'});
                 }
             });
         },

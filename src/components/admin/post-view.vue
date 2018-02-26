@@ -2,14 +2,14 @@
     <div>
         <div>
             <div class="is-pulled-right">
-                <router-link :to="'/admin/editor/'+post.id" class="button is-danger" v-show="">
+                <router-link :to="'/admin/editor/'+post.id" class="button is-danger" v-show="auth && isAdmin">
                     <i class="fa fa-pencil"></i> &nbsp;
                     Editar
                 </router-link>
             </div>
             <h1 class="title">{{post.title}}</h1>
         </div>
-        <div v-html="post.content"></div>
+        <div v-html="post.content" class="mar-top"></div>
     </div>
 </template>
 
@@ -34,6 +34,14 @@
                     title: '',
                     content: '',
                 },
+            }
+        },
+        computed: {
+            auth() {
+                return this.$store.getters.estaAutenticado;
+            },
+            isAdmin() {
+                return this.$store.getters.esAdministrador;
             }
         },
         methods: {

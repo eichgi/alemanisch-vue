@@ -37,7 +37,7 @@
                 <a class="navbar-item has-dropdown is-hoverable" v-if="auth">
                     <a class="navbar-link">Opciones</a>
                     <div class="navbar-dropdown">
-                        <router-link class="navbar-item" to="/admin">
+                        <router-link class="navbar-item" to="/admin" v-if="auth && isAdmin">
                             Admin
                         </router-link>
                         <router-link class="navbar-item" to="/perfil">
@@ -67,6 +67,9 @@
         computed: {
             auth() {
                 return this.$store.getters.estaAutenticado;
+            },
+            isAdmin() {
+                return this.$store.getters.esAdministrador;
             }
         },
         watch: {

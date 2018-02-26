@@ -1,3 +1,11 @@
 .text-center {
     text-align: center;
 }
+
+.mar-center {
+    margin: 0 auto;
+}
+
+.mar-top {
+    margin-top: 20px;
+}

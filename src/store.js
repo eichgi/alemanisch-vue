@@ -51,7 +51,10 @@ export default new Vuex.Store({
         },
         guestsExercises(state) {
             return state.guestsExercises;
-        }
+        },
+        esAdministrador(state) {
+            return state.usuario.role === 'admin';
+        },
     },
     actions: {
         login({commit, dispatch}, authData) {
@@ -87,7 +90,8 @@ export default new Vuex.Store({
             dispatch('redirectToHome');
         },
         redirectToHome() {
-            router.push({path: '/'});
+            //router.push({path: '/'});
+            router.push('/');
         },
         checkIfLogin({commit}) {
             let usuario = localStorage.getItem('usuario');

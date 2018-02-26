@@ -2,6 +2,11 @@
     <section class="container">
         <div class="columns" style="margin-top: 1em">
             <div class="column is-3">
+                <div class="has-text-centered">
+                    <router-link to="/biblioteca" class="button is-primary is-fullwidth">
+                        Índice
+                    </router-link>
+                </div>
                 <aside class="menu" style="margin-top: 1.5em">
                     <p class="menu-label">
                         Listado de publicaciones

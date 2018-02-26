@@ -21,7 +21,8 @@ import Admin from './components/admin/index.vue'
 import Post from './components/admin/post.vue'
 import PostView from './components/admin/post-view.vue'
 import Editor from './components/admin/editor.vue'
-import Placeholder from './components/admin/placeholder.vue'
+import AdminIntro from './components/admin/intro.vue'
+import BibliotecaIntro from './components/biblioteca/intro.vue'
 
 Vue.use(VueRouter);
 
@@ -76,7 +77,7 @@ const routes = [
             } else {
                 next('/');
             }
-        }
+        },
     },
     {
         path: '/pronombres',
@@ -127,6 +128,10 @@ const routes = [
         component: Biblioteca,
         children: [
             {
+                path: '',
+                component: BibliotecaIntro,
+            },
+            {
                 path: 'post',
                 component: Post,
                 children: [
@@ -141,10 +146,17 @@ const routes = [
     {
         path: '/admin',
         component: Admin,
+        beforeEnter(to, from, next) {
+            if (store.getters.estaAutenticado && store.getters.esAdministrador) {
+                next();
+            } else {
+                next('/');
+            }
+        },
         children: [
             {
                 path: '',
-                component: Placeholder,
+                component: AdminIntro,
             },
             {
                 path: 'editor',
