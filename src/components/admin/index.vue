@@ -15,7 +15,10 @@
                     </p>
                     <ul class="menu-list" v-show="toggle">
                         <li v-for="post in posts">
-                            <router-link v-bind:to="'/admin/post/'+post.id">{{post.title}}</router-link>
+                            <router-link v-bind:to="'/admin/post/'+post.id"
+                                         :class="($route.params.id == post.id) ? 'selected': ''">
+                                {{post.title}}
+                            </router-link>
                         </li>
                     </ul>
                 </aside>
@@ -61,6 +64,11 @@
 <style scoped>
     section {
         min-height: 80vh;
+    }
+
+    .selected {
+        background: #3273dc;
+        color: white;
     }
 
     .menu-list > li > a:hover {

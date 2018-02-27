@@ -57,5 +57,7 @@
 </script>
 
 <style scoped>
-
+    .table {
+        margin-top: 1em !important;
+    }
 </style>
