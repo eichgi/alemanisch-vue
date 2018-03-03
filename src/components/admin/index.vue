@@ -32,29 +32,25 @@
 
 <script>
     import Axios from './../../axios'
+    import Store from './../../store'
 
     export default {
         created() {
-            this.getPosts();
+            this.$store.dispatch('getPosts');
+        },
+        computed: {
+            posts: function () {
+                return Store.getters.posts;
+            },
         },
         name: "index",
         data: () => {
             return {
-                posts: null,
                 toggle: true,
             }
         },
         methods: {
-            getPosts() {
-                Axios
-                    .get('/posts')
-                    .then((res) => {
-                        console.log(res);
-                        this.posts = res.data.posts;
-                    });
-            },
             toggleList() {
-
                 this.toggle = !this.toggle;
             }
         },

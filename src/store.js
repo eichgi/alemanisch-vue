@@ -12,6 +12,7 @@ export default new Vuex.Store({
         respuesta: {},
         ejercicio_id: null,
         guestsExercises: [],
+        posts: [],
     },
     mutations: {
         storeUser(state, usuario) {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
         clearGuestsExercises(state) {
             state.guestsExercises = [];
         },
+        storePosts(state, posts) {
+            state.posts = posts;
+        },
     },
     getters: {
         estaAutenticado(state) {
@@ -55,6 +59,9 @@ export default new Vuex.Store({
         esAdministrador(state) {
             return state.usuario.role === 'admin';
         },
+        posts(state) {
+            return state.posts;
+        }
     },
     actions: {
         login({commit, dispatch}, authData) {
@@ -133,6 +140,14 @@ export default new Vuex.Store({
         },
         clearGuestsExercises({commit}) {
             commit('clearGuestsExercises');
+        },
+        getPosts({commit}) {
+            Axios
+                .get('/posts')
+                .then((res) => {
+                    console.log(res);
+                    commit('storePosts', res.data.posts);
+                });
         },
     }
 });

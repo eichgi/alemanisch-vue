@@ -102,13 +102,15 @@
                     Axios
                         .post(this.route, this.post)
                         .then((res) => {
-                            console.log(res);
+                            //console.log(res);
                             if (res.data.status) {
                                 swal({
                                     title: res.data.message,
                                     type: 'success',
                                 });
                             }
+
+                            this.$store.dispatch('getPosts');
                         })
                         .catch((error) => {
                             console.log(error);
